@@ -13,17 +13,13 @@
         body {
             font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #f5f0e8 0%, #e8dfd0 100%);
-            min-height: 100vh;
-            color: #3d2817;
+            min-height: 100vh; color: #3d2817;
         }
         .app-container { max-width: 800px; margin: 0 auto; padding: 2rem; }
-        
-        /* HEADER */
         .header {
             text-align: center; margin-bottom: 3rem; padding: 3rem 2rem;
             background: rgba(255, 255, 255, 0.7);
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 16px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
         .header h1 {
             font-size: 2.8rem; margin-bottom: 0.75rem;
@@ -35,239 +31,121 @@
             padding: 0.5rem 1rem; border-radius: 20px;
             font-size: 0.85rem; margin-top: 0.5rem;
         }
-
-        /* BIG SEARCH */
         .search-hero {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            margin-bottom: 2rem;
+            background: white; padding: 2.5rem; border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); margin-bottom: 2rem;
         }
         .search-label {
-            color: #8b4513;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-align: center;
+            color: #8b4513; font-size: 1.3rem; font-weight: 600;
+            margin-bottom: 1rem; text-align: center;
         }
-        .search-input-wrapper {
-            position: relative;
-        }
+        .search-input-wrapper { position: relative; }
         .search-input {
-            width: 100%;
-            padding: 1.25rem 3.5rem 1.25rem 1.25rem;
-            border: 3px solid #c4a57b;
-            border-radius: 12px;
-            font-family: 'Georgia', serif;
-            font-size: 1.1rem;
-            transition: all 0.3s;
+            width: 100%; padding: 1.25rem 3.5rem 1.25rem 1.25rem;
+            border: 3px solid #c4a57b; border-radius: 12px;
+            font-family: 'Georgia', serif; font-size: 1.1rem; transition: all 0.3s;
         }
         .search-input:focus {
-            outline: none;
-            border-color: #8b4513;
+            outline: none; border-color: #8b4513;
             box-shadow: 0 0 0 4px rgba(139, 69, 19, 0.1);
         }
         .search-icon {
-            position: absolute;
-            right: 1.25rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #8b4513;
-            font-size: 1.5rem;
-            pointer-events: none;
+            position: absolute; right: 1.25rem; top: 50%;
+            transform: translateY(-50%); color: #8b4513;
+            font-size: 1.5rem; pointer-events: none;
         }
         .search-hint {
-            margin-top: 0.75rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #5c4033;
-            font-style: italic;
+            margin-top: 0.75rem; text-align: center;
+            font-size: 0.9rem; color: #5c4033; font-style: italic;
         }
-
-        /* SEARCH RESULTS DROPDOWN */
         .search-results {
-            background: white;
-            border: 2px solid #c4a57b;
-            border-radius: 12px;
-            margin-top: 1rem;
-            max-height: 400px;
-            overflow-y: auto;
+            background: white; border: 2px solid #c4a57b; border-radius: 12px;
+            margin-top: 1rem; max-height: 400px; overflow-y: auto;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
         .search-result-item {
-            padding: 1.25rem;
-            border-bottom: 1px solid #e8dfd0;
-            cursor: pointer;
-            transition: all 0.2s;
+            padding: 1.25rem; border-bottom: 1px solid #e8dfd0;
+            cursor: pointer; transition: all 0.2s;
         }
         .search-result-item:hover {
             background: linear-gradient(135deg, #f8f5f0 0%, #e8dfd0 100%);
         }
-        .search-result-item:last-child {
-            border-bottom: none;
-        }
+        .search-result-item:last-child { border-bottom: none; }
         .search-result-name {
-            color: #8b4513;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
+            color: #8b4513; font-size: 1.2rem;
+            font-weight: 600; margin-bottom: 0.25rem;
         }
-        .search-result-role {
-            color: #5c4033;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-        .search-result-preview {
-            color: #5c4033;
-            font-size: 0.9rem;
-            font-style: italic;
-            opacity: 0.8;
-        }
+        .search-result-role { color: #5c4033; font-size: 0.95rem; margin-bottom: 0.5rem; }
         .search-result-testament {
-            display: inline-block;
-            background: rgba(139, 69, 19, 0.1);
-            color: #8b4513;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            margin-right: 0.5rem;
+            display: inline-block; background: rgba(139, 69, 19, 0.1);
+            color: #8b4513; padding: 0.25rem 0.5rem;
+            border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;
         }
-
-        /* EMOTIONAL PATHWAYS */
         .pathways-section {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            margin-bottom: 2rem;
+            background: white; padding: 2.5rem; border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); margin-bottom: 2rem;
         }
         .pathways-label {
-            color: #8b4513;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-align: center;
+            color: #8b4513; font-size: 1.3rem; font-weight: 600;
+            margin-bottom: 1.5rem; text-align: center;
         }
         .pathway-btn {
-            display: block;
-            width: 100%;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
+            display: block; width: 100%; padding: 1.25rem; margin-bottom: 1rem;
             background: linear-gradient(135deg, #f8f5f0 0%, #e8dfd0 100%);
-            border: 2px solid #c4a57b;
-            border-radius: 12px;
-            cursor: pointer;
-            text-align: left;
-            font-family: 'Georgia', serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            color: #3d2817;
+            border: 2px solid #c4a57b; border-radius: 12px; cursor: pointer;
+            text-align: left; font-family: 'Georgia', serif; font-size: 1rem;
+            transition: all 0.3s ease; color: #3d2817;
         }
         .pathway-btn:hover {
             background: linear-gradient(135deg, #e8dfd0 0%, #d4c5b0 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-
-        /* INTERPRETATION VIEW */
         .interpretation-view {
-            background: white;
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            margin-bottom: 2rem;
+            background: white; padding: 3rem; border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); margin-bottom: 2rem;
         }
         .interpretation-header {
-            text-align: center;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid #e0d5c7;
-            margin-bottom: 2rem;
+            text-align: center; padding-bottom: 2rem;
+            border-bottom: 2px solid #e0d5c7; margin-bottom: 2rem;
         }
-        .interpretation-header h2 {
-            color: #8b4513;
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .interpretation-meta {
-            font-size: 0.95rem;
-            color: #5c4033;
-            margin-top: 0.5rem;
-        }
+        .interpretation-header h2 { color: #8b4513; font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .interpretation-meta { font-size: 0.95rem; color: #5c4033; margin-top: 0.5rem; }
         .interpretation-content {
-            line-height: 1.9;
-            font-size: 1.05rem;
-            color: #4a3728;
-            white-space: pre-wrap;
-            margin-bottom: 2rem;
+            line-height: 1.9; font-size: 1.05rem; color: #4a3728;
+            white-space: pre-wrap; margin-bottom: 2rem;
         }
         .journal-section {
             background: linear-gradient(135deg, #f8f5f0 0%, #e8dfd0 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 2rem;
+            padding: 2rem; border-radius: 12px; margin-top: 2rem;
         }
-        .journal-section h3 {
-            color: #8b4513;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
+        .journal-section h3 { color: #8b4513; margin-bottom: 1rem; font-size: 1.3rem; }
         .journal-textarea {
-            width: 100%;
-            min-height: 150px;
-            padding: 1rem;
-            border: 2px solid #c4a57b;
-            border-radius: 8px;
-            font-family: 'Georgia', serif;
-            font-size: 1rem;
-            line-height: 1.8;
-            resize: vertical;
+            width: 100%; min-height: 150px; padding: 1rem;
+            border: 2px solid #c4a57b; border-radius: 8px;
+            font-family: 'Georgia', serif; font-size: 1rem;
+            line-height: 1.8; resize: vertical;
         }
         .action-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem; margin-top: 2rem;
         }
         .btn {
-            padding: 1rem;
-            background: linear-gradient(135deg, #8b4513 0%, #6b3410 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Georgia', serif;
-            text-align: center;
+            padding: 1rem; background: linear-gradient(135deg, #8b4513 0%, #6b3410 100%);
+            color: white; border: none; border-radius: 8px; cursor: pointer;
+            font-size: 1rem; font-weight: 600; transition: all 0.3s ease;
+            font-family: 'Georgia', serif; text-align: center;
         }
         .btn:hover {
             background: linear-gradient(135deg, #6b3410 0%, #4b2408 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        .btn-secondary {
-            background: white;
-            color: #8b4513;
-            border: 2px solid #8b4513;
-        }
-        .btn-secondary:hover {
-            background: #8b4513;
-            color: white;
-        }
+        .btn-secondary { background: white; color: #8b4513; border: 2px solid #8b4513; }
+        .btn-secondary:hover { background: #8b4513; color: white; }
         .back-btn {
-            display: inline-block;
-            margin-bottom: 2rem;
-            padding: 0.75rem 1.5rem;
+            display: inline-block; margin-bottom: 2rem; padding: 0.75rem 1.5rem;
             background: linear-gradient(135deg, #e8dfd0 0%, #c4a57b 100%);
-            color: #3d2817;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            color: #3d2817; border: none; border-radius: 8px; cursor: pointer;
+            font-size: 1rem; text-decoration: none; transition: all 0.3s ease;
             font-family: 'Georgia', serif;
         }
         .back-btn:hover {
@@ -275,44 +153,34 @@
             transform: translateY(-2px);
         }
         .share-options {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: flex; gap: 1rem; margin-top: 1rem;
+            flex-wrap: wrap; justify-content: center;
         }
         .share-btn {
-            padding: 0.75rem 1.5rem;
-            background: white;
-            color: #8b4513;
-            border: 2px solid #8b4513;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-family: 'Georgia', serif;
+            padding: 0.75rem 1.5rem; background: white; color: #8b4513;
+            border: 2px solid #8b4513; border-radius: 8px; cursor: pointer;
+            font-size: 0.9rem; font-weight: 600; text-decoration: none;
+            transition: all 0.3s ease; font-family: 'Georgia', serif;
         }
-        .share-btn:hover {
-            background: #8b4513;
-            color: white;
-        }
+        .share-btn:hover { background: #8b4513; color: white; }
         .footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            color: #5c4033;
-            font-style: italic;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 8px;
+            text-align: center; padding: 2rem; margin-top: 3rem;
+            font-size: 0.9rem; color: #5c4033; font-style: italic;
+            background: rgba(255, 255, 255, 0.5); border-radius: 8px;
         }
         .loading {
-            text-align: center;
-            padding: 2rem;
-            color: #8b4513;
-            font-style: italic;
+            text-align: center; padding: 3rem; color: #8b4513;
+            font-style: italic; font-size: 1.1rem;
+        }
+        .loading-spinner {
+            display: inline-block; width: 40px; height: 40px;
+            border: 4px solid #e8dfd0; border-top: 4px solid #8b4513;
+            border-radius: 50%; animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         @media (max-width: 768px) {
             .app-container { padding: 1rem; }
@@ -327,364 +195,240 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
         
-        const BIBLICAL_WOMEN = [
-            { 
-                name: "Hagar", testament: "OT", role: "Egyptian Servant",
-                story: "Enslaved servant given to Abraham as surrogate. Fled to wilderness when mistreated. God met her there and she named Him 'El Roi' - The God Who Sees. Gave birth to Ishmael. Later expelled with her son into desert. God provided water and promised Ishmael would become a great nation.",
-                keyMoments: ["enslaved", "used as surrogate", "fled mistreatment", "met God in wilderness", "named God El Roi", "expelled with son", "God provided water"],
-                emotions: ["overlooked", "used", "abandoned", "seen by God"],
-                tags: ["overlooked", "forgotten", "abandoned", "seen", "survivor", "mother", "exile"],
-                scripture: "Genesis 16, 21"
-            },
-            { 
-                name: "Ruth", testament: "OT", role: "Moabite Widow",
-                story: "Moabite woman who married into Israelite family. After husband died, refused to leave mother-in-law Naomi. Declared 'Where you go, I go.' Traveled to Bethlehem as foreigner. Worked in fields gleaning grain. Caught attention of Boaz through her loyalty. Married Boaz. Became great-grandmother of King David.",
-                keyMoments: ["widowed young", "chose loyalty over safety", "traveled as foreigner", "worked as gleaner", "proposed marriage at threshing floor", "married Boaz", "became ancestor of David"],
-                emotions: ["loyal", "choosing family", "outsider becoming insider", "redeemed"],
-                tags: ["loyalty", "foreigner", "covenant", "family", "redemption", "widow", "gleaning"],
-                scripture: "Book of Ruth"
-            },
-            { 
-                name: "Esther", testament: "OT", role: "Jewish Queen of Persia",
-                story: "Jewish orphan raised by cousin Mordecai. Hidden her identity to become queen of Persia. When genocide decree threatened her people, faced choice: stay silent and safe, or speak up and risk death. Fasted three days. Approached king uninvited (punishable by death). Threw strategic banquets. Revealed her identity and saved her people from annihilation.",
-                keyMoments: ["orphaned", "hidden identity", "became queen", "genocide threat against Jews", "fasted three days", "risked death approaching king", "threw strategic banquets", "revealed identity", "saved her people"],
-                emotions: ["hidden for survival", "strategic", "courageous in timing", "savior of nation"],
-                tags: ["courage", "strategic", "hidden", "timing", "genocide", "queen", "savior", "orphan"],
-                scripture: "Book of Esther"
-            },
-            { 
-                name: "Mary Magdalene", testament: "NT", role: "Disciple & First Witness",
-                story: "Delivered from seven demons by Jesus. Became devoted follower. Supported Jesus' ministry financially. Stayed at the cross when others fled. First to discover empty tomb. First to see risen Christ. Commissioned to tell disciples 'I have seen the Lord.' Called 'apostle to the apostles.'",
-                keyMoments: ["delivered from seven demons", "devoted follower of Jesus", "supported ministry financially", "stayed at cross when others fled", "first at empty tomb", "first to see risen Christ", "commissioned as apostle to apostles"],
-                emotions: ["delivered and transformed", "devoted despite cost", "witnessed death and resurrection", "first evangelist"],
-                tags: ["deliverance", "demons", "devotion", "witness", "resurrection", "apostle", "first", "transformation"],
-                scripture: "Luke 8; John 19-20"
-            },
-            { 
-                name: "Deborah", testament: "OT", role: "Judge & Prophetess",
-                story: "Only female judge in Israel. Prophet and military leader. Held court under palm tree settling disputes. Called reluctant commander Barak to lead army. He refused unless she came. She agreed but prophesied a woman would get credit for victory. Jael killed enemy commander. Deborah sang victory song celebrating women's courage.",
-                keyMoments: ["judge of Israel", "prophet under palm tree", "settled disputes", "called Barak to battle", "he refused without her presence", "went to war", "prophesied woman's victory", "Jael's tent peg moment", "sang victory song"],
-                emotions: ["leadership in male domain", "prophetic authority", "courage in war", "celebrating women"],
-                tags: ["leadership", "judge", "prophet", "warrior", "courage", "lonely", "authority"],
-                scripture: "Judges 4-5"
-            },
-            { 
-                name: "Rahab", testament: "OT", role: "Canaanite Prostitute",
-                story: "Prostitute in Jericho who hid Israelite spies on her roof. Lied to protect them from authorities. Made covenant with spies: save my family when you conquer. Hung scarlet cord from window as sign. Family spared when Jericho fell. Joined Israelite community. Married Salmon. Became great-great-grandmother of King David. Listed in Jesus' genealogy.",
-                keyMoments: ["hid Israelite spies", "lied to authorities to protect them", "made covenant for family's safety", "scarlet cord signal", "family saved in conquest", "joined Israel", "married into community", "ancestor of David", "in Jesus' genealogy"],
-                emotions: ["faith amid occupation", "protective of family", "redeemed from margins", "ancestral significance"],
-                tags: ["redemption", "prostitute", "mistakes", "past", "faith", "protective", "ancestry"],
-                scripture: "Joshua 2, 6; Matthew 1"
-            },
-            {
-                name: "Sarah", testament: "OT", role: "Matriarch",
-                story: "Wife of Abraham. Barren for decades. Laughed when told she'd bear son at 90. Gave her servant Hagar to Abraham as surrogate. Grew jealous when Hagar conceived. Mistreated Hagar. Finally bore Isaac at 90. Demanded Hagar's expulsion. Lived to 127. Buried in Machpelah cave.",
-                keyMoments: ["barren for decades", "laughed at promise", "gave Hagar as surrogate", "jealousy toward Hagar", "mistreated Hagar", "bore Isaac at 90", "demanded Hagar's expulsion", "died at 127"],
-                emotions: ["waiting painfully", "laughter at impossibility", "jealousy", "promise fulfilled"],
-                tags: ["waiting", "barren", "promise", "laughter", "jealousy", "matriarch"],
-                scripture: "Genesis 11-23"
-            },
-            {
-                name: "Mary (Mother of Jesus)", testament: "NT", role: "Theotokos",
-                story: "Young virgin engaged to Joseph. Angel announced she'd bear Messiah. Said 'Let it be.' Traveled pregnant to Bethlehem. Gave birth in stable. Fled to Egypt as refugees. Raised Jesus in Nazareth. At wedding in Cana pushed Jesus into ministry. Watched son crucified. Present at Pentecost.",
-                keyMoments: ["virgin visited by angel", "said yes to impossible", "traveled pregnant", "gave birth in stable", "fled to Egypt", "raised Messiah", "at wedding prompted first miracle", "watched crucifixion", "present at Pentecost"],
-                emotions: ["obedience amid scandal", "pondering mysteries", "suffering as mother", "witness to resurrection"],
-                tags: ["obedience", "mother", "pain", "suffering", "witness", "chosen", "scandal"],
-                scripture: "Matthew 1-2; Luke 1-2; John 2, 19; Acts 1"
-            },
-            {
-                name: "Leah", testament: "OT", role: "Unloved Wife",
-                story: "Older daughter tricked into marriage with Jacob who loved Rachel. Bore six sons trying to win Jacob's love. Named children after her pain: Reuben (he sees my misery), Simeon (heard I'm unloved). Competed with Rachel. Gave her servant to Jacob. Eventually bore Judah (praise), from whose line came Jesus.",
-                keyMoments: ["tricked into marriage", "unloved compared to Rachel", "bore six sons", "named children after pain", "competed with sister", "gave servant as surrogate", "bore Judah", "ancestor of Jesus"],
-                emotions: ["unwanted", "competing for love", "finding worth in children", "ancestral significance"],
-                tags: ["unloved", "unwanted", "competition", "rejection", "forgotten", "overlooked"],
-                scripture: "Genesis 29-35"
-            },
-            {
-                name: "Hannah", testament: "OT", role: "Prayer Warrior",
-                story: "Barren wife tormented by husband's other wife Peninnah. Wept and prayed at temple so intensely priest thought she was drunk. Vowed if God gave her son, she'd dedicate him to temple service. Bore Samuel. Kept her vow and gave Samuel to Eli. Sang prophetic song. Bore five more children.",
-                keyMoments: ["barren and taunted", "wept at temple", "vowed to dedicate son", "thought drunk by priest", "defended her prayer", "bore Samuel", "gave Samuel to temple", "sang prophetic song", "bore five more children"],
-                emotions: ["anguish of barrenness", "fervent prayer", "costly vow", "fulfilled promise"],
-                tags: ["waiting", "barren", "prayer", "taunted", "faithful", "painful"],
-                scripture: "1 Samuel 1-2"
-            }
-        ];
+        // BIBLICAL WOMEN REFERENCE - Just names and scripture locations
+        const BIBLICAL_REFERENCES = {
+            "Hagar": { testament: "OT", role: "Egyptian Servant", refs: ["Genesis+16", "Genesis+21:8-21"], tags: ["overlooked", "abandoned", "exile", "seen"] },
+            "Sarah": { testament: "OT", role: "Matriarch", refs: ["Genesis+18:1-15", "Genesis+21:1-7"], tags: ["waiting", "barren", "laughter", "promise"] },
+            "Ruth": { testament: "OT", role: "Moabite Widow", refs: ["Ruth+1", "Ruth+2", "Ruth+4:13-17"], tags: ["loyalty", "foreigner", "covenant", "redemption"] },
+            "Esther": { testament: "OT", role: "Jewish Queen", refs: ["Esther+2", "Esther+4", "Esther+7"], tags: ["courage", "hidden", "strategic", "timing"] },
+            "Mary Magdalene": { testament: "NT", role: "First Witness", refs: ["Luke+8:1-3", "John+20:1-18"], tags: ["deliverance", "devotion", "witness", "resurrection"] },
+            "Deborah": { testament: "OT", role: "Judge", refs: ["Judges+4", "Judges+5"], tags: ["leadership", "judge", "prophet", "warrior"] },
+            "Rahab": { testament: "OT", role: "Canaanite Woman", refs: ["Joshua+2", "Joshua+6:22-25"], tags: ["redemption", "faith", "courage", "protective"] },
+            "Leah": { testament: "OT", role: "Unloved Wife", refs: ["Genesis+29:16-35", "Genesis+30:9-21"], tags: ["unloved", "rejection", "competition", "overlooked"] },
+            "Hannah": { testament: "OT", role: "Prayer Warrior", refs: ["1+Samuel+1", "1+Samuel+2:1-11"], tags: ["barren", "prayer", "faithful", "waiting"] },
+            "Mary": { testament: "NT", role: "Mother of Jesus", refs: ["Luke+1:26-56", "Luke+2"], tags: ["obedience", "mother", "chosen", "suffering"] },
+            "Eve": { testament: "OT", role: "First Woman", refs: ["Genesis+2:18-25", "Genesis+3"], tags: ["creation", "choice", "consequence", "first"] },
+            "Rebekah": { testament: "OT", role: "Strategist", refs: ["Genesis+24", "Genesis+27"], tags: ["strategic", "choice", "deception", "mother"] },
+            "Rachel": { testament: "OT", role: "Beloved Wife", refs: ["Genesis+29:1-30", "Genesis+30:1-24"], tags: ["beloved", "jealousy", "barren", "longing"] },
+            "Miriam": { testament: "OT", role: "Prophetess", refs: ["Exodus+2:1-10", "Exodus+15:20-21"], tags: ["prophet", "worship", "leadership", "rebellion"] },
+            "Abigail": { testament: "OT", role: "Peacemaker", refs: ["1+Samuel+25"], tags: ["wisdom", "peacemaker", "intervention", "strategic"] },
+            "Bathsheba": { testament: "OT", role: "Taken Queen", refs: ["2+Samuel+11", "1+Kings+1:11-31"], tags: ["violation", "survival", "power", "queen"] },
+            "Martha": { testament: "NT", role: "Hospitable Sister", refs: ["Luke+10:38-42", "John+11"], tags: ["service", "hospitality", "busy", "sister"] },
+            "Mary of Bethany": { testament: "NT", role: "Devoted Learner", refs: ["Luke+10:38-42", "John+12:1-8"], tags: ["devotion", "worship", "learner", "anointing"] },
+            "Lydia": { testament: "NT", role: "First European Convert", refs: ["Acts+16:11-40"], tags: ["hospitality", "business", "faith", "convert"] },
+            "Priscilla": { testament: "NT", role: "Teacher", refs: ["Acts+18"], tags: ["teacher", "partner", "leader", "courage"] },
+            "Elizabeth": { testament: "NT", role: "John's Mother", refs: ["Luke+1:5-80"], tags: ["barren", "prophecy", "joy", "mother"] },
+            "Anna": { testament: "NT", role: "Prophetess", refs: ["Luke+2:36-38"], tags: ["prophet", "widow", "prayer", "recognition"] }
+        };
 
         const EMOTIONAL_PATHWAYS = [
             { label: "I feel overlooked and forgotten", matches: ["Hagar", "Leah"] },
             { label: "I've made mistakes I can't outgrow", matches: ["Rahab", "Mary Magdalene"] },
-            { label: "I'm standing by someone else's pain", matches: ["Ruth", "Mary (Mother of Jesus)"] },
+            { label: "I'm standing by someone else's pain", matches: ["Ruth", "Mary"] },
             { label: "I'm being called to lead, but it's lonely", matches: ["Deborah", "Esther"] },
             { label: "I'm waiting—faithfully, painfully, uncertainly", matches: ["Hannah", "Sarah"] },
-            { label: "I've experienced violation or injustice", matches: ["Hagar", "Leah"] },
+            { label: "I've experienced violation or injustice", matches: ["Hagar", "Bathsheba"] },
             { label: "I'm choosing to stay when leaving would be easier", matches: ["Ruth"] }
         ];
 
-        class InterpretationGenerator {
-            constructor(woman) {
-                this.woman = woman;
+        // BIBLE API FETCHER
+        class BibleFetcher {
+            static async fetch(refs) {
+                const texts = await Promise.all(refs.map(r => this.fetchOne(r)));
+                return texts.join('\n\n');
+            }
+
+            static async fetchOne(ref) {
+                try {
+                    const res = await fetch(`https://bible-api.com/${ref}?translation=web`);
+                    if (!res.ok) return '';
+                    const data = await res.json();
+                    return data.text || '';
+                } catch (e) {
+                    return '';
+                }
+            }
+        }
+
+        // TEXT ANALYZER - Reads and understands the story
+        class Analyzer {
+            static analyze(text, name) {
+                const l = text.toLowerCase();
+                const moments = [];
+                
+                if (l.includes('barren') || l.includes('no child')) moments.push('experienced barrenness');
+                if (l.includes('fled') || l.includes('escape')) moments.push('fled danger');
+                if (l.includes('wilderness') || l.includes('desert')) moments.push('wandered wilderness');
+                if (l.includes('angel') || l.includes('lord appeared')) moments.push('encountered Divine');
+                if (l.includes('named') && l.includes('god')) moments.push('named God');
+                if (l.includes('servant') || l.includes('slave')) moments.push('served as enslaved');
+                if (l.includes('gave birth') || l.includes('bore')) moments.push('gave birth');
+                if (l.includes('sent away') || l.includes('cast out')) moments.push('was expelled');
+                if (l.includes('widow')) moments.push('became widow');
+                if (l.includes('loyalty') || l.includes('not leave')) moments.push('chose loyalty');
+                if (l.includes('king') || l.includes('queen')) moments.push('became royalty');
+                if (l.includes('fast')) moments.push('fasted');
+                if (l.includes('courage') || l.includes('brave')) moments.push('acted courageously');
+                if (l.includes('saved') || l.includes('deliver')) moments.push('brought deliverance');
+                if (l.includes('hid') || l.includes('protect')) moments.push('protected others');
+                if (l.includes('judge')) moments.push('served as judge');
+                if (l.includes('prophet')) moments.push('prophesied');
+                if (l.includes('prayer') || l.includes('prayed')) moments.push('prayed fervently');
+                if (l.includes('wept')) moments.push('wept in anguish');
+                if (l.includes('demon')) moments.push('delivered from demons');
+                if (l.includes('tomb') || l.includes('risen')) moments.push('witnessed resurrection');
+                if (l.includes('first') && l.includes('see')) moments.push('first witness');
+                if (l.includes('loved') && l.includes('not')) moments.push('was unloved');
+                
+                return {
+                    moments: moments.length ? moments : ['lived her story', 'made choices'],
+                    hasViolation: l.includes('force') || l.includes('took her') || l.includes('slave'),
+                    hasChoice: l.includes('chose') || l.includes('decided') || l.includes('refused'),
+                    hasEncounter: l.includes('angel') || l.includes('lord') || l.includes('god'),
+                    hasRisk: l.includes('risk') || l.includes('danger') || l.includes('death')
+                };
+            }
+        }
+
+        // GENERATOR - Creates four lenses
+        class Generator {
+            constructor(name, data, text, analysis) {
+                this.name = name;
+                this.data = data;
+                this.text = text;
+                this.a = analysis;
             }
 
             generate() {
-                return `She Speaks: The Many Faces of ${this.woman.name}
+                return `She Speaks: The Many Faces of ${this.name}
 
-${this.generateAbide365()}
+${this.abide()}
 
-${this.generateFractaSelf()}
+${this.fracta()}
 
-${this.generateTheArc()}
+${this.arc()}
 
-${this.generateSatiricalQuill()}`;
+${this.quill()}`;
             }
 
-            generateAbide365() {
-                const { name, story, keyMoments, emotions, scripture } = this.woman;
+            abide() {
+                const { moments, hasViolation, hasChoice, hasEncounter, hasRisk } = this.a;
                 
-                const hasViolation = keyMoments.some(m => m.includes('enslaved') || m.includes('mistreated') || m.includes('unloved'));
-                const hasChoice = keyMoments.some(m => m.includes('chose') || m.includes('refused') || m.includes('declared') || m.includes('said yes'));
-                const hasEncounter = keyMoments.some(m => m.includes('met God') || m.includes('delivered') || m.includes('witness') || m.includes('angel'));
-                const hasRisk = keyMoments.some(m => m.includes('risked') || m.includes('approached king') || m.includes('hid') || m.includes('lied'));
-                
-                let coreLesson = '';
+                let lesson = '';
                 if (hasViolation && hasEncounter) {
-                    coreLesson = `${name} teaches us that being unseen by people does not mean being unseen by God. In her darkest moment—${keyMoments[0]}—the Divine met her. She discovered that human exploitation cannot erase divine acknowledgment.`;
+                    lesson = `${this.name} teaches us that being unseen by people does not mean being unseen by God. In her darkest moment, the Divine met her.`;
                 } else if (hasChoice && hasRisk) {
-                    coreLesson = `${name} teaches us about choices that cost us everything. She faced a crossroads where safety beckoned on one side and calling on the other. She chose the harder path, and in that choice, wrote a story larger than her own survival.`;
+                    lesson = `${this.name} teaches us about choices that cost us everything. She chose the harder path.`;
                 } else if (hasEncounter) {
-                    coreLesson = `${name} teaches us about the transformative power of encounter. Before she met the Divine, she was one thing. After, she became another. Deliverance changed not just her circumstances but her identity.`;
+                    lesson = `${this.name} teaches us about transformative encounter. Her meeting with the Divine changed everything.`;
                 } else {
-                    coreLesson = `${name} teaches us about the courage required to live authentically in a world that demands conformity. Her story is one of resistance, resilience, and the refusal to be reduced to a single narrative.`;
+                    lesson = `${this.name} teaches us about courage to live authentically despite constraints.`;
                 }
 
                 return `🕊 Abide 365
 
-${coreLesson}
+${lesson}
 
-Her story (${scripture}) is not sanitized. It includes ${keyMoments.slice(0, 3).join(', ')}. These are not metaphors—these are the raw materials of her life. And yet, from this complexity emerges a testimony about ${emotions[emotions.length - 1]}.
+Her story shows she ${moments.slice(0, 3).join(', ')}. These are the raw materials of her life. From this complexity emerges testimony.
 
-She reminds us that our struggles are not obstacles to our purpose but often the very soil from which it grows.
+She reminds us that struggles are often the soil from which purpose grows.
 
-Reflect: Where in ${name}'s journey do you see echoes of your own? What does her courage, her pain, or her choices reveal about the path you're walking?
+Reflect: Where do you see ${this.name}'s journey in your own? What does her story reveal about your path?
 
-If you feel led to give, consider supporting organizations that serve women in similar circumstances.`;
+If you feel led to give, consider supporting organizations serving women.`;
             }
 
-            generateFractaSelf() {
-                const { name, keyMoments, emotions } = this.woman;
+            fracta() {
+                const { moments } = this.a;
                 
-                let fractaType = '';
-                if (keyMoments.some(m => m.includes('named God'))) {
-                    fractaType = 'The God-Namer';
-                } else if (keyMoments.some(m => m.includes('first') && m.includes('witness'))) {
-                    fractaType = 'The First Witness';
-                } else if (keyMoments.some(m => m.includes('refused') || m.includes('chose loyalty'))) {
-                    fractaType = 'The Covenant Keeper';
-                } else if (keyMoments.some(m => m.includes('hidden identity') || m.includes('strategic'))) {
-                    fractaType = 'The Strategic Revealer';
-                } else if (keyMoments.some(m => m.includes('judge') || m.includes('led'))) {
-                    fractaType = 'The Reluctant Commander';
-                } else if (keyMoments.some(m => m.includes('hid') || m.includes('protected'))) {
-                    fractaType = 'The Protective Conspirator';
-                } else if (keyMoments.some(m => m.includes('bore') && m.includes('ancestor'))) {
-                    fractaType = 'The Ancestral Thread';
-                } else if (keyMoments.some(m => m.includes('prayed') || m.includes('vowed'))) {
-                    fractaType = 'The Prayer Warrior';
-                } else {
-                    fractaType = 'The Courageous One';
-                }
+                let type = 'The Faithful One';
+                if (moments.some(m => m.includes('named God'))) type = 'The God-Namer';
+                else if (moments.some(m => m.includes('first witness'))) type = 'The First Witness';
+                else if (moments.some(m => m.includes('loyalty'))) type = 'The Covenant Keeper';
+                else if (moments.some(m => m.includes('royalty'))) type = 'The Strategic Revealer';
+                else if (moments.some(m => m.includes('judge'))) type = 'The Reluctant Commander';
+                else if (moments.some(m => m.includes('protected'))) type = 'The Protective One';
+                else if (moments.some(m => m.includes('prayed'))) type = 'The Prayer Warrior';
 
-                const starterPack = this.generateStarterPack();
+                const pack = ['A voice that speaks truth', 'Courage wrapped in vulnerability', 'Seeds of hope'];
 
                 return `🧩 FractaSelf
 
-• FractaType: ${fractaType}
+• FractaType: ${type}
 
-• Identity Reflection: ${name} carries the paradox of ${emotions[0]} and ${emotions[emotions.length - 1]}. She is both the one who ${keyMoments[0]} and the one who ${keyMoments[keyMoments.length - 1]}.
+• Identity Reflection: ${this.name} embodies tension between ${moments[0] || 'struggle'} and transformation.
 
 • Starter Pack:
-${starterPack.map(item => `  - ${item}`).join('\n')}
+${pack.map(i => `  - ${i}`).join('\n')}
 
-• Toy-box Image Prompt: Create a clean, single-image action-figure packaging illustration of '${fractaType}'. Include symbolic accessories: ${starterPack.slice(0, 3).join(', ').toLowerCase()}. One figure only, inside a clear plastic toy box. Minimalist packaging, earthy biblical tones.
-
-• Caption: For every woman who has ${keyMoments[0]} and still found the strength to ${keyMoments[keyMoments.length - 1]}. ${name} shows us that our stories matter, our voices count, and our journeys shape the future.`;
+• Caption: For every woman who has ${moments[0] || 'faced the impossible'} and found strength to ${moments[moments.length-1] || 'persevere'}. ${this.name} shows us our stories matter.`;
             }
 
-            generateStarterPack() {
-                const { keyMoments } = this.woman;
-                const items = [];
-                
-                if (keyMoments.some(m => m.includes('wilderness') || m.includes('desert') || m.includes('water'))) {
-                    items.push('A waterskin (survival in impossible places)');
-                }
-                if (keyMoments.some(m => m.includes('named'))) {
-                    items.push('A scroll with divine name (authority to name the sacred)');
-                }
-                if (keyMoments.some(m => m.includes('scarlet cord') || m.includes('signal'))) {
-                    items.push('A scarlet cord (covenant sign)');
-                }
-                if (keyMoments.some(m => m.includes('gleaning') || m.includes('worked'))) {
-                    items.push('Stalks of grain (dignity in labor)');
-                }
-                if (keyMoments.some(m => m.includes('banquet') || m.includes('feast'))) {
-                    items.push('A feast invitation (strategic hospitality)');
-                }
-                if (keyMoments.some(m => m.includes('tomb') || m.includes('empty'))) {
-                    items.push('An empty tomb marker (testimony of resurrection)');
-                }
-                if (keyMoments.some(m => m.includes('fasted'))) {
-                    items.push('Sackcloth hidden under silk (private mourning, public courage)');
-                }
-                if (keyMoments.some(m => m.includes('palm tree') || m.includes('judge'))) {
-                    items.push('A gavel from palm wood (justice delivered)');
-                }
-                if (keyMoments.some(m => m.includes('laughed'))) {
-                    items.push('A worn tent with laughter echoing (impossible promises)');
-                }
-                if (keyMoments.some(m => m.includes('prayed') || m.includes('temple'))) {
-                    items.push('Tear-stained prayer shawl (fervent intercession)');
-                }
-                
-                items.push('A voice that speaks truth');
-                items.push('Courage wrapped in vulnerability');
-                
-                return items.slice(0, 5);
-            }
-
-            generateTheArc() {
-                const { name, keyMoments } = this.woman;
-                
-                const beginning = keyMoments[0];
-                const middle = keyMoments[Math.floor(keyMoments.length / 2)];
-                const end = keyMoments[keyMoments.length - 1];
+            arc() {
+                const { moments } = this.a;
+                const start = moments[0] || 'faced her circumstances';
+                const mid = moments[Math.floor(moments.length/2)] || 'made a choice';
+                const end = moments[moments.length-1] || 'transformed her story';
 
                 return `🌈 The Arc
 
-There was a woman whose story began with ${beginning}. She lived in a world that measured women by their utility to men.
+There was a woman who ${start}. She lived in a world that measured women by utility to men.
 
-At the crossroads of her life, she ${middle}. This was not the easy choice. This was not the expected choice. But it was her choice.
+At the crossroads, she ${mid}. Not the easy choice. Not the expected choice. But her choice.
 
-And in that moment of decision, something ancient and eternal whispered through her story. She became more than her circumstances. She became a witness to what happens when courage meets calling.
+In that decision, something ancient whispered through her story. She became more than circumstances.
 
-Her name was ${name}, but she is every woman who has ever stood at the edge of expectation and chosen to leap.
+Her name was ${this.name}, but she is every woman who has stood at the edge and chosen to leap.
 
-The moral: The stories that matter most are often written by those who ${beginning} but refused to let that be their ending. Instead, they ${end}.`;
+The moral: Stories that matter most are written by those who ${start} but refused to let that be their ending.`;
             }
 
-            generateSatiricalQuill() {
-                const { name, role, keyMoments, testament } = this.woman;
-                
-                const overlookedMoment = this.findOverlookedMoment();
-
+            quill() {
                 return `🪞 Satirical Quill™
 
-Ah, ${name}. The biblical writers gave her "${role}" status, which in ancient ${testament} terms means she got maybe a few verses while the men got entire genealogies.
+Ah, ${this.name}. The biblical writers gave her "${this.data.role}" status, which means a few verses while patriarchs got books. Classic.
 
-Let's talk about what actually happened: ${keyMoments[0]}. But here's where it gets interesting—the part where ${overlookedMoment}? Yeah, that tends to get glossed over in Sunday School. Too messy. Too real. Too much agency for a woman in a patriarchal text.
+Centuries of interpretation have tried to tame her story, turn it into a nice moral lesson. Because apparently, women can't just be complex humans with agency.
 
-${this.generateCritique()}
+But here's what sanitized versions miss: ${this.name} didn't wait for permission. She didn't ask if her story was "appropriate." She lived it.
 
-But here's what the sanitized versions miss: ${name} didn't wait for permission. She didn't ask if her story was "appropriate." She ${keyMoments[keyMoments.length - 1]}, and that act of defiance, survival, or faith (often all three) made it into a book that's spent millennia trying to downplay women's voices.
-
-So next time someone tries to reduce ${name} to a one-dimensional moral lesson, remember: she was a whole person who made real choices in impossible circumstances. And that's more revolutionary than any sermon.
+So next time someone tries to reduce ${this.name} to a one-dimensional lesson, remember: she was a whole person making real choices in impossible circumstances. That's more revolutionary than any sermon.
 
 In jest, truth; in truth, jest. — The Quill`;
             }
-
-            findOverlookedMoment() {
-                const { keyMoments } = this.woman;
-                if (keyMoments.some(m => m.includes('named God'))) return 'she named God before any patriarch did';
-                if (keyMoments.some(m => m.includes('lied'))) return 'she straight-up lied to protect the spies';
-                if (keyMoments.some(m => m.includes('strategic'))) return 'she manipulated the system to save her people';
-                if (keyMoments.some(m => m.includes('apostle'))) return 'she was commissioned as apostle before the twelve';
-                if (keyMoments.some(m => m.includes('judge'))) return 'she led an entire nation while men got the credit';
-                if (keyMoments.some(m => m.includes('laughed'))) return 'she laughed at God and still got the promise';
-                if (keyMoments.some(m => m.includes('jealous'))) return 'she weaponized a system against another woman';
-                return 'she made choices that shaped nations';
-            }
-
-            generateCritique() {
-                const { name, keyMoments } = this.woman;
-                
-                if (keyMoments.some(m => m.includes('enslaved') || m.includes('used'))) {
-                    return `And naturally, when the whole "using an enslaved woman as a surrogate" plan blew up, guess who got blamed? Not the patriarchs making these decisions. Nope. ${name}.`;
-                }
-                if (keyMoments.some(m => m.includes('hidden identity'))) {
-                    return `She had to hide who she was just to survive, then reveal it to save everyone. And somehow this gets turned into a story about "God's timing" rather than what it actually is: a woman navigating a genocidal empire.`;
-                }
-                if (keyMoments.some(m => m.includes('delivered from demons') || m.includes('delivered from seven'))) {
-                    return `Seven demons cast out, and for centuries she got labeled a prostitute (spoiler: the Bible never says that). Classic move: if a woman is too free, too devoted, too visible, make her scandalous.`;
-                }
-                if (keyMoments.some(m => m.includes('hid spies') || m.includes('prostitute'))) {
-                    return `A sex worker who committed treason gets into Jesus' family tree, which is either radical grace or the Bible admitting that "respectable" families are built on complicated women.`;
-                }
-                if (keyMoments.some(m => m.includes('unloved') || m.includes('jealous'))) {
-                    return `She spent her life competing for love, weaponized surrogacy against her sister, and still ended up in Jesus' lineage. If that's not a commentary on how messed up these family systems were, I don't know what is.`;
-                }
-                return `Because apparently, women can't just be complex humans with agency. They have to be moral lessons, cautionary tales, or footnotes.`;
-            }
-
-            getShareQuote() {
-                const { keyMoments } = this.woman;
-                return `The stories that matter most are often written by those who ${keyMoments[0]} but refused to let that be their ending.`;
-            }
         }
 
-        const JournalStorage = {
-            save: (womanName, journalText) => {
-                const journals = JSON.parse(localStorage.getItem('sheSpeaksJournals') || '{}');
-                if (!journals[womanName]) journals[womanName] = [];
-                journals[womanName].push({ id: Date.now(), text: journalText, date: new Date().toISOString() });
-                localStorage.setItem('sheSpeaksJournals', JSON.stringify(journals));
+        const Storage = {
+            save: (name, text) => {
+                const j = JSON.parse(localStorage.getItem('sheSpeaksJournals') || '{}');
+                if (!j[name]) j[name] = [];
+                j[name].push({ id: Date.now(), text, date: new Date().toISOString() });
+                localStorage.setItem('sheSpeaksJournals', JSON.stringify(j));
             },
             getAll: () => JSON.parse(localStorage.getItem('sheSpeaksJournals') || '{}')
         };
 
-        const ExportHelper = {
-            downloadPDF: (womanName, content, journalEntries) => {
+        const PDF = {
+            download: (name, content, entries) => {
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
                 let y = 20;
                 
                 doc.setFontSize(18);
                 doc.setTextColor(139, 69, 19);
-                doc.text(`She Speaks: ${womanName}`, 20, y);
+                doc.text(`She Speaks: ${name}`, 20, y);
                 y += 15;
                 
                 doc.setFontSize(11);
                 doc.setTextColor(60, 40, 23);
                 const lines = doc.splitTextToSize(content, 170);
                 doc.text(lines, 20, y);
-                y += lines.length * 5 + 20;
                 
-                if (journalEntries?.length) {
-                    if (y > 250) { doc.addPage(); y = 20; }
-                    doc.setFontSize(14);
-                    doc.setTextColor(139, 69, 19);
-                    doc.text("My Reflections", 20, y);
-                    y += 10;
-                    
-                    journalEntries.forEach(entry => {
-                        if (y > 250) { doc.addPage(); y = 20; }
-                        doc.setFontSize(9);
-                        doc.setTextColor(92, 64, 51);
-                        doc.text(new Date(entry.date).toLocaleDateString(), 20, y);
-                        y += 7;
-                        doc.setFontSize(11);
-                        doc.setTextColor(60, 40, 23);
-                        const entryLines = doc.splitTextToSize(entry.text, 170);
-                        doc.text(entryLines, 20, y);
-                        y += entryLines.length * 5 + 10;
-                    });
-                }
-                
-                doc.setFontSize(9);
-                doc.setTextColor(92, 64, 51);
-                doc.text('© Adenike Omoregbee. All rights reserved.', 20, 285);
-                doc.save(`she-speaks-${womanName.toLowerCase().replace(/\s/g, '-')}.pdf`);
+                doc.save(`she-speaks-${name.toLowerCase().replace(/\s/g, '-')}.pdf`);
             },
             
-            share: (womanName, quote, platform) => {
-                const text = `${quote}\n\nShe Speaks: The Many Faces of Her™\n#SheSpeaks #BiblicalWomen #${womanName.replace(/\s/g, '')}`;
+            share: (name, quote, platform) => {
+                const text = `${quote}\n\nShe Speaks: The Many Faces of Her™\n#SheSpeaks #${name.replace(/\s/g, '')}`;
                 const url = window.location.href;
                 const urls = {
                     twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
@@ -692,199 +436,180 @@ In jest, truth; in truth, jest. — The Quill`;
                     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
                     whatsapp: `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`
                 };
-                if (urls[platform]) window.open(urls[platform], '_blank', 'width=600,height=400');
+                if (urls[platform]) window.open(urls[platform], '_blank');
             }
         };
 
         function App() {
             const [view, setView] = useState('home');
             const [searchTerm, setSearchTerm] = useState('');
-            const [selectedWoman, setSelectedWoman] = useState(null);
-            const [interpretation, setInterpretation] = useState('');
+            const [selected, setSelected] = useState(null);
+            const [interp, setInterp] = useState('');
             const [journalText, setJournalText] = useState('');
             const [journals, setJournals] = useState({});
-            const [isGenerating, setIsGenerating] = useState(false);
+            const [loading, setLoading] = useState(false);
             const [showResults, setShowResults] = useState(false);
 
-            useEffect(() => { setJournals(JournalStorage.getAll()); }, []);
+            useEffect(() => { setJournals(Storage.getAll()); }, []);
 
-            const searchMatches = BIBLICAL_WOMEN.filter(w => {
-                const searchLower = searchTerm.toLowerCase();
-                return searchTerm.length > 0 && (
-                    w.name.toLowerCase().includes(searchLower) ||
-                    w.role.toLowerCase().includes(searchLower) ||
-                    w.story.toLowerCase().includes(searchLower) ||
-                    w.tags.some(tag => tag.includes(searchLower))
+            const women = Object.keys(BIBLICAL_REFERENCES);
+            
+            const matches = women.filter(n => {
+                const s = searchTerm.toLowerCase();
+                const d = BIBLICAL_REFERENCES[n];
+                return s.length > 0 && (
+                    n.toLowerCase().includes(s) ||
+                    d.role.toLowerCase().includes(s) ||
+                    d.tags.some(t => t.includes(s))
                 );
             });
 
-            const handleSelectWoman = (woman) => {
-                setSelectedWoman(woman);
-                setIsGenerating(true);
+            const select = async (name) => {
+                setSelected(name);
+                setLoading(true);
                 setView('woman');
                 setJournalText('');
                 setSearchTerm('');
                 setShowResults(false);
-                setTimeout(() => {
-                    const generator = new InterpretationGenerator(woman);
-                    setInterpretation(generator.generate());
-                    setIsGenerating(false);
-                }, 100);
-            };
-
-            const handlePathwayClick = (pathway) => {
-                const matchedName = pathway.matches[0];
-                const woman = BIBLICAL_WOMEN.find(w => w.name === matchedName);
-                if (woman) handleSelectWoman(woman);
-            };
-
-            const handleSearchChange = (e) => {
-                setSearchTerm(e.target.value);
-                setShowResults(e.target.value.length > 0);
-            };
-
-            const handleSearchKeyPress = (e) => {
-                if (e.key === 'Enter' && searchMatches.length > 0) {
-                    handleSelectWoman(searchMatches[0]);
+                
+                const data = BIBLICAL_REFERENCES[name];
+                const text = await BibleFetcher.fetch(data.refs);
+                
+                if (text) {
+                    const analysis = Analyzer.analyze(text, name);
+                    const gen = new Generator(name, data, text, analysis);
+                    setInterp(gen.generate());
+                } else {
+                    setInterp('Unable to fetch Bible text. Check connection and try again.');
                 }
+                
+                setLoading(false);
             };
 
-            const handleSaveJournal = () => {
-                if (journalText.trim() && selectedWoman) {
-                    JournalStorage.save(selectedWoman.name, journalText.trim());
-                    setJournals(JournalStorage.getAll());
-                    alert('Journal entry saved!');
+            const handlePath = (pathway) => select(pathway.matches[0]);
+            const handleSearch = (e) => { setSearchTerm(e.target.value); setShowResults(e.target.value.length > 0); };
+            const handleKey = (e) => { if (e.key === 'Enter' && matches.length > 0) select(matches[0]); };
+            const saveJournal = () => {
+                if (journalText.trim() && selected) {
+                    Storage.save(selected, journalText.trim());
+                    setJournals(Storage.getAll());
+                    alert('Journal saved!');
                     setJournalText('');
                 }
             };
 
-            const renderHome = () => (
-                <>
-                    <div className="header">
-                        <h1>She Speaks: The Many Faces of Her™</h1>
-                        <p>Four lenses. One voice. Her story reimagined.</p>
-                        <div className="badge">Smart Edition • {BIBLICAL_WOMEN.length} Biblical Women</div>
-                    </div>
-
-                    <div className="search-hero">
-                        <div className="search-label">
-                            What are you looking for?
-                        </div>
-                        <div className="search-input-wrapper">
-                            <input 
-                                type="text" 
-                                className="search-input" 
-                                placeholder="courage, betrayal, Esther, forgotten, redemption..."
-                                value={searchTerm} 
-                                onChange={handleSearchChange}
-                                onKeyPress={handleSearchKeyPress}
-                            />
-                            <span className="search-icon">⌕</span>
-                        </div>
-                        <div className="search-hint">
-                            Type a name, emotion, or theme • Press Enter to explore first result
-                        </div>
-
-                        {showResults && searchMatches.length > 0 && (
-                            <div className="search-results">
-                                {searchMatches.map((woman, idx) => (
-                                    <div 
-                                        key={idx}
-                                        className="search-result-item"
-                                        onClick={() => handleSelectWoman(woman)}
-                                    >
-                                        <div>
-                                            <span className="search-result-testament">{woman.testament}</span>
-                                            <span className="search-result-name">{woman.name}</span>
-                                        </div>
-                                        <div className="search-result-role">{woman.role}</div>
-                                        <div className="search-result-preview">
-                                            {woman.story.substring(0, 120)}...
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="pathways-section">
-                        <div className="pathways-label">
-                            🌿 Or choose what you're walking through right now:
-                        </div>
-                        {EMOTIONAL_PATHWAYS.map((pathway, idx) => (
-                            <button key={idx} className="pathway-btn" onClick={() => handlePathwayClick(pathway)}>
-                                • {pathway.label}
-                            </button>
-                        ))}
-                    </div>
-                </>
-            );
-
-            const renderWoman = () => {
-                const generator = new InterpretationGenerator(selectedWoman);
-                const shareQuote = generator.getShareQuote();
-
-                return (
-                    <>
-                        <button className="back-btn" onClick={() => setView('home')}>← Back</button>
-
-                        <div className="interpretation-view">
-                            <div className="interpretation-header">
-                                <h2>She Speaks: The Many Faces of {selectedWoman.name}</h2>
-                                <div className="interpretation-meta">
-                                    {selectedWoman.testament} • {selectedWoman.role} • {selectedWoman.scripture}
-                                </div>
-                            </div>
-
-                            {isGenerating ? (
-                                <div className="loading">Generating four-lens interpretation...</div>
-                            ) : (
-                                <>
-                                    <div className="interpretation-content">{interpretation}</div>
-
-                                    <div className="journal-section">
-                                        <h3>✍️ Your Personal Reflection</h3>
-                                        <textarea className="journal-textarea" placeholder="Write your reflection here..."
-                                            value={journalText} onChange={(e) => setJournalText(e.target.value)} />
-                                        <div className="action-buttons">
-                                            <button className="btn" onClick={handleSaveJournal}>💾 Save Journal Entry</button>
-                                            <button className="btn btn-secondary" onClick={() => ExportHelper.downloadPDF(
-                                                selectedWoman.name, interpretation, journals[selectedWoman.name])}>
-                                                📄 Export as PDF
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div style={{marginTop: '2rem', textAlign: 'center'}}>
-                                        <h3 style={{color: '#8b4513', marginBottom: '1rem'}}>📱 Share on Social Media</h3>
-                                        <div className="share-options">
-                                            <button className="share-btn" onClick={() => ExportHelper.share(selectedWoman.name, shareQuote, 'twitter')}>🐦 Twitter</button>
-                                            <button className="share-btn" onClick={() => ExportHelper.share(selectedWoman.name, shareQuote, 'facebook')}>📘 Facebook</button>
-                                            <button className="share-btn" onClick={() => ExportHelper.share(selectedWoman.name, shareQuote, 'linkedin')}>💼 LinkedIn</button>
-                                            <button className="share-btn" onClick={() => ExportHelper.share(selectedWoman.name, shareQuote, 'whatsapp')}>💬 WhatsApp</button>
-                                            <button className="share-btn" onClick={() => navigator.clipboard.writeText(shareQuote).then(() => alert('Quote copied!'))}>📋 Copy Quote</button>
-                                        </div>
-                                    </div>
-                                </>
-                            )}
-                        </div>
-                    </>
-                );
-            };
-
             return (
                 <div className="app-container">
-                    {view === 'home' && renderHome()}
-                    {view === 'woman' && selectedWoman && renderWoman()}
-                    <div className="footer">© Adenike Omoregbee. All rights reserved.</div>
+                    {view === 'home' && (
+                        <>
+                            <div className="header">
+                                <h1>She Speaks: The Many Faces of Her™</h1>
+                                <p>Four lenses. One voice. Her story reimagined.</p>
+                                <div className="badge">AI-Powered • Reads Bible & Reasons • {women.length} Women</div>
+                            </div>
+
+                            <div className="search-hero">
+                                <div className="search-label">What are you looking for?</div>
+                                <div className="search-input-wrapper">
+                                    <input 
+                                        type="text" 
+                                        className="search-input" 
+                                        placeholder="courage, forgotten, Esther, redemption..."
+                                        value={searchTerm} 
+                                        onChange={handleSearch}
+                                        onKeyPress={handleKey}
+                                    />
+                                    <span className="search-icon">⌕</span>
+                                </div>
+                                <div className="search-hint">
+                                    Type name, emotion, or theme • Press Enter for first result
+                                </div>
+
+                                {showResults && matches.length > 0 && (
+                                    <div className="search-results">
+                                        {matches.map((n, i) => {
+                                            const d = BIBLICAL_REFERENCES[n];
+                                            return (
+                                                <div key={i} className="search-result-item" onClick={() => select(n)}>
+                                                    <div>
+                                                        <span className="search-result-testament">{d.testament}</span>
+                                                        <span className="search-result-name">{n}</span>
+                                                    </div>
+                                                    <div className="search-result-role">{d.role}</div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="pathways-section">
+                                <div className="pathways-label">
+                                    🌿 Or choose what you're walking through:
+                                </div>
+                                {EMOTIONAL_PATHWAYS.map((p, i) => (
+                                    <button key={i} className="pathway-btn" onClick={() => handlePath(p)}>
+                                        • {p.label}
+                                    </button>
+                                ))}
+                            </div>
+                        </>
+                    )}
+
+                    {view === 'woman' && selected && (
+                        <>
+                            <button className="back-btn" onClick={() => setView('home')}>← Back</button>
+
+                            <div className="interpretation-view">
+                                <div className="interpretation-header">
+                                    <h2>She Speaks: {selected}</h2>
+                                    <div className="interpretation-meta">
+                                        {BIBLICAL_REFERENCES[selected].testament} • {BIBLICAL_REFERENCES[selected].role}
+                                    </div>
+                                </div>
+
+                                {loading ? (
+                                    <div className="loading">
+                                        <div className="loading-spinner"></div>
+                                        <div>Fetching Bible text and reasoning about her story...</div>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="interpretation-content">{interp}</div>
+
+                                        <div className="journal-section">
+                                            <h3>✍️ Your Reflection</h3>
+                                            <textarea className="journal-textarea" placeholder="Write here..."
+                                                value={journalText} onChange={(e) => setJournalText(e.target.value)} />
+                                            <div className="action-buttons">
+                                                <button className="btn" onClick={saveJournal}>💾 Save</button>
+                                                <button className="btn btn-secondary" onClick={() => PDF.download(selected, interp, journals[selected])}>
+                                                    📄 Export PDF
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div style={{marginTop: '2rem', textAlign: 'center'}}>
+                                            <h3 style={{color: '#8b4513', marginBottom: '1rem'}}>📱 Share</h3>
+                                            <div className="share-options">
+                                                <button className="share-btn" onClick={() => PDF.share(selected, 'Her story matters', 'X')}>X X</button>
+                                                <button className="share-btn" onClick={() => PDF.share(selected, 'Her story matters', 'facebook')}>📘 Facebook</button>
+                                                <button className="share-btn" onClick={() => PDF.share(selected, 'Her story matters', 'linkedin')}>💼 LinkedIn</button>
+                                                <button className="share-btn" onClick={() => PDF.share(selected, 'Her story matters', 'whatsapp')}>💬 WhatsApp</button>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        </>
+                    )}
+
+                    <div className="footer">
+                        © Adenike Omoregbee • Powered by Bible API & Smart Reasoning
+                    </div>
                 </div>
             );
         }
-
-        ReactDOM.render(<App />, document.getElementById('root'));
-    </script>
-</body>
-</html>
 
         ReactDOM.render(<App />, document.getElementById('root'));
     </script>
