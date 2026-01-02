@@ -58,48 +58,12 @@
             margin-top: 0.75rem; text-align: center;
             font-size: 0.9rem; color: #5c4033; font-style: italic;
         }
-        .search-results {
-            background: white; border: 2px solid #c4a57b; border-radius: 12px;
-            margin-top: 1rem; max-height: 400px; overflow-y: auto;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        .examples {
+            margin-top: 1rem; padding: 1rem;
+            background: rgba(139, 69, 19, 0.05);
+            border-radius: 8px; font-size: 0.9rem; color: #5c4033;
         }
-        .search-result-item {
-            padding: 1.25rem; border-bottom: 1px solid #e8dfd0;
-            cursor: pointer; transition: all 0.2s;
-        }
-        .search-result-item:hover {
-            background: linear-gradient(135deg, #f8f5f0 0%, #e8dfd0 100%);
-        }
-        .search-result-item:last-child { border-bottom: none; }
-        .search-result-name {
-            color: #8b4513; font-size: 1.2rem;
-            font-weight: 600; margin-bottom: 0.25rem;
-        }
-        .search-result-role { color: #5c4033; font-size: 0.95rem; margin-bottom: 0.5rem; }
-        .search-result-testament {
-            display: inline-block; background: rgba(139, 69, 19, 0.1);
-            color: #8b4513; padding: 0.25rem 0.5rem;
-            border-radius: 4px; font-size: 0.75rem; margin-right: 0.5rem;
-        }
-        .pathways-section {
-            background: white; padding: 2.5rem; border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); margin-bottom: 2rem;
-        }
-        .pathways-label {
-            color: #8b4513; font-size: 1.3rem; font-weight: 600;
-            margin-bottom: 1.5rem; text-align: center;
-        }
-        .pathway-btn {
-            display: block; width: 100%; padding: 1.25rem; margin-bottom: 1rem;
-            background: linear-gradient(135deg, #f8f5f0 0%, #e8dfd0 100%);
-            border: 2px solid #c4a57b; border-radius: 12px; cursor: pointer;
-            text-align: left; font-family: 'Georgia', serif; font-size: 1rem;
-            transition: all 0.3s ease; color: #3d2817;
-        }
-        .pathway-btn:hover {
-            background: linear-gradient(135deg, #e8dfd0 0%, #d4c5b0 100%);
-            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+        .examples strong { color: #8b4513; }
         .interpretation-view {
             background: white; padding: 3rem; border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); margin-bottom: 2rem;
@@ -110,6 +74,12 @@
         }
         .interpretation-header h2 { color: #8b4513; font-size: 2.2rem; margin-bottom: 0.5rem; }
         .interpretation-meta { font-size: 0.95rem; color: #5c4033; margin-top: 0.5rem; }
+        .match-reason {
+            background: linear-gradient(135deg, #f8f5f0 0%, #e8dfd0 100%);
+            padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;
+            border-left: 4px solid #8b4513;
+        }
+        .match-reason strong { color: #8b4513; }
         .interpretation-content {
             line-height: 1.9; font-size: 1.05rem; color: #4a3728;
             white-space: pre-wrap; margin-bottom: 2rem;
@@ -152,17 +122,6 @@
             background: linear-gradient(135deg, #c4a57b 0%, #a48860 100%);
             transform: translateY(-2px);
         }
-        .share-options {
-            display: flex; gap: 1rem; margin-top: 1rem;
-            flex-wrap: wrap; justify-content: center;
-        }
-        .share-btn {
-            padding: 0.75rem 1.5rem; background: white; color: #8b4513;
-            border: 2px solid #8b4513; border-radius: 8px; cursor: pointer;
-            font-size: 0.9rem; font-weight: 600; text-decoration: none;
-            transition: all 0.3s ease; font-family: 'Georgia', serif;
-        }
-        .share-btn:hover { background: #8b4513; color: white; }
         .footer {
             text-align: center; padding: 2rem; margin-top: 3rem;
             font-size: 0.9rem; color: #5c4033; font-style: italic;
@@ -177,6 +136,9 @@
             border: 4px solid #e8dfd0; border-top: 4px solid #8b4513;
             border-radius: 50%; animation: spin 1s linear infinite;
             margin-bottom: 1rem;
+        }
+        .loading-status {
+            font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -195,47 +157,253 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
         
-        // BIBLICAL WOMEN REFERENCE - Just names and scripture locations
-        const BIBLICAL_REFERENCES = {
-            "Hagar": { testament: "OT", role: "Egyptian Servant", refs: ["Genesis+16", "Genesis+21:8-21"], tags: ["overlooked", "abandoned", "exile", "seen"] },
-            "Sarah": { testament: "OT", role: "Matriarch", refs: ["Genesis+18:1-15", "Genesis+21:1-7"], tags: ["waiting", "barren", "laughter", "promise"] },
-            "Ruth": { testament: "OT", role: "Moabite Widow", refs: ["Ruth+1", "Ruth+2", "Ruth+4:13-17"], tags: ["loyalty", "foreigner", "covenant", "redemption"] },
-            "Esther": { testament: "OT", role: "Jewish Queen", refs: ["Esther+2", "Esther+4", "Esther+7"], tags: ["courage", "hidden", "strategic", "timing"] },
-            "Mary Magdalene": { testament: "NT", role: "First Witness", refs: ["Luke+8:1-3", "John+20:1-18"], tags: ["deliverance", "devotion", "witness", "resurrection"] },
-            "Deborah": { testament: "OT", role: "Judge", refs: ["Judges+4", "Judges+5"], tags: ["leadership", "judge", "prophet", "warrior"] },
-            "Rahab": { testament: "OT", role: "Canaanite Woman", refs: ["Joshua+2", "Joshua+6:22-25"], tags: ["redemption", "faith", "courage", "protective"] },
-            "Leah": { testament: "OT", role: "Unloved Wife", refs: ["Genesis+29:16-35", "Genesis+30:9-21"], tags: ["unloved", "rejection", "competition", "overlooked"] },
-            "Hannah": { testament: "OT", role: "Prayer Warrior", refs: ["1+Samuel+1", "1+Samuel+2:1-11"], tags: ["barren", "prayer", "faithful", "waiting"] },
-            "Mary": { testament: "NT", role: "Mother of Jesus", refs: ["Luke+1:26-56", "Luke+2"], tags: ["obedience", "mother", "chosen", "suffering"] },
-            "Eve": { testament: "OT", role: "First Woman", refs: ["Genesis+2:18-25", "Genesis+3"], tags: ["creation", "choice", "consequence", "first"] },
-            "Rebekah": { testament: "OT", role: "Strategist", refs: ["Genesis+24", "Genesis+27"], tags: ["strategic", "choice", "deception", "mother"] },
-            "Rachel": { testament: "OT", role: "Beloved Wife", refs: ["Genesis+29:1-30", "Genesis+30:1-24"], tags: ["beloved", "jealousy", "barren", "longing"] },
-            "Miriam": { testament: "OT", role: "Prophetess", refs: ["Exodus+2:1-10", "Exodus+15:20-21"], tags: ["prophet", "worship", "leadership", "rebellion"] },
-            "Abigail": { testament: "OT", role: "Peacemaker", refs: ["1+Samuel+25"], tags: ["wisdom", "peacemaker", "intervention", "strategic"] },
-            "Bathsheba": { testament: "OT", role: "Taken Queen", refs: ["2+Samuel+11", "1+Kings+1:11-31"], tags: ["violation", "survival", "power", "queen"] },
-            "Martha": { testament: "NT", role: "Hospitable Sister", refs: ["Luke+10:38-42", "John+11"], tags: ["service", "hospitality", "busy", "sister"] },
-            "Mary of Bethany": { testament: "NT", role: "Devoted Learner", refs: ["Luke+10:38-42", "John+12:1-8"], tags: ["devotion", "worship", "learner", "anointing"] },
-            "Lydia": { testament: "NT", role: "First European Convert", refs: ["Acts+16:11-40"], tags: ["hospitality", "business", "faith", "convert"] },
-            "Priscilla": { testament: "NT", role: "Teacher", refs: ["Acts+18"], tags: ["teacher", "partner", "leader", "courage"] },
-            "Elizabeth": { testament: "NT", role: "John's Mother", refs: ["Luke+1:5-80"], tags: ["barren", "prophecy", "joy", "mother"] },
-            "Anna": { testament: "NT", role: "Prophetess", refs: ["Luke+2:36-38"], tags: ["prophet", "widow", "prayer", "recognition"] }
+        // COMPLETE LIST - ALL BIBLICAL WOMEN
+        const ALL_WOMEN = {
+            "Hagar": { t: "OT", r: "Egyptian Servant", refs: ["Genesis+16", "Genesis+21:8-21"] },
+            "Sarah": { t: "OT", r: "Matriarch", refs: ["Genesis+18:1-15", "Genesis+21:1-7"] },
+            "Eve": { t: "OT", r: "First Woman", refs: ["Genesis+2:18-25", "Genesis+3"] },
+            "Rebekah": { t: "OT", r: "Strategist", refs: ["Genesis+24", "Genesis+27"] },
+            "Leah": { t: "OT", r: "Unloved Wife", refs: ["Genesis+29:16-35", "Genesis+30:9-21"] },
+            "Rachel": { t: "OT", r: "Beloved Wife", refs: ["Genesis+29:1-30", "Genesis+30:1-24"] },
+            "Tamar (Genesis)": { t: "OT", r: "Justice Seeker", refs: ["Genesis+38"] },
+            "Jochebed": { t: "OT", r: "Moses' Mother", refs: ["Exodus+2:1-10"] },
+            "Miriam": { t: "OT", r: "Prophetess", refs: ["Exodus+2:1-10", "Exodus+15:20-21", "Numbers+12"] },
+            "Zipporah": { t: "OT", r: "Moses' Wife", refs: ["Exodus+2:15-22", "Exodus+4:24-26"] },
+            "Rahab": { t: "OT", r: "Canaanite Woman", refs: ["Joshua+2", "Joshua+6:22-25"] },
+            "Deborah": { t: "OT", r: "Judge & Prophet", refs: ["Judges+4", "Judges+5"] },
+            "Jael": { t: "OT", r: "Tent Peg Warrior", refs: ["Judges+4:17-22", "Judges+5:24-27"] },
+            "Ruth": { t: "OT", r: "Moabite Widow", refs: ["Ruth+1", "Ruth+2", "Ruth+4:13-17"] },
+            "Naomi": { t: "OT", r: "Bitter to Blessed", refs: ["Ruth+1", "Ruth+4:13-17"] },
+            "Hannah": { t: "OT", r: "Prayer Warrior", refs: ["1+Samuel+1", "1+Samuel+2:1-11"] },
+            "Abigail": { t: "OT", r: "Peacemaker", refs: ["1+Samuel+25"] },
+            "Michal": { t: "OT", r: "David's First Wife", refs: ["1+Samuel+18:20-29", "2+Samuel+6:16-23"] },
+            "Bathsheba": { t: "OT", r: "Taken Queen", refs: ["2+Samuel+11", "1+Kings+1:11-31"] },
+            "Tamar (2 Samuel)": { t: "OT", r: "Violated Daughter", refs: ["2+Samuel+13"] },
+            "Rizpah": { t: "OT", r: "Mourning Mother", refs: ["2+Samuel+21:8-14"] },
+            "Queen of Sheba": { t: "OT", r: "Seeker of Wisdom", refs: ["1+Kings+10:1-13"] },
+            "Jezebel": { t: "OT", r: "Wicked Queen", refs: ["1+Kings+16:29-33", "1+Kings+21", "2+Kings+9:30-37"] },
+            "Widow of Zarephath": { t: "OT", r: "Faith in Famine", refs: ["1+Kings+17:8-24"] },
+            "Huldah": { t: "OT", r: "Prophetess", refs: ["2+Kings+22:14-20"] },
+            "Esther": { t: "OT", r: "Jewish Queen", refs: ["Esther+2", "Esther+4", "Esther+7"] },
+            "Vashti": { t: "OT", r: "Defiant Queen", refs: ["Esther+1"] },
+            "Job's Wife": { t: "OT", r: "Suffering Spouse", refs: ["Job+2:9-10"] },
+            "Gomer": { t: "OT", r: "Unfaithful Wife", refs: ["Hosea+1", "Hosea+3"] },
+            "Mary (Mother of Jesus)": { t: "NT", r: "Theotokos", refs: ["Luke+1:26-56", "Luke+2", "John+19:25-27"] },
+            "Elizabeth": { t: "NT", r: "John's Mother", refs: ["Luke+1:5-80"] },
+            "Anna": { t: "NT", r: "Prophetess", refs: ["Luke+2:36-38"] },
+            "Woman at the Well": { t: "NT", r: "Truth Teller", refs: ["John+4:1-42"] },
+            "Woman with Issue of Blood": { t: "NT", r: "Healed by Touch", refs: ["Mark+5:25-34"] },
+            "Syrophoenician Woman": { t: "NT", r: "Persistent Mother", refs: ["Mark+7:24-30"] },
+            "Woman Caught in Adultery": { t: "NT", r: "Accused & Freed", refs: ["John+8:1-11"] },
+            "Mary Magdalene": { t: "NT", r: "First Witness", refs: ["Luke+8:1-3", "John+20:1-18"] },
+            "Martha": { t: "NT", r: "Hospitable Sister", refs: ["Luke+10:38-42", "John+11"] },
+            "Mary of Bethany": { t: "NT", r: "Devoted Learner", refs: ["Luke+10:38-42", "John+12:1-8"] },
+            "Widow with Two Mites": { t: "NT", r: "Generous Giver", refs: ["Mark+12:41-44"] },
+            "Joanna": { t: "NT", r: "Supporter", refs: ["Luke+8:1-3", "Luke+24:10"] },
+            "Lydia": { t: "NT", r: "First European Convert", refs: ["Acts+16:11-40"] },
+            "Priscilla": { t: "NT", r: "Teacher", refs: ["Acts+18"] },
+            "Phoebe": { t: "NT", r: "Deacon", refs: ["Romans+16:1-2"] },
+            "Sapphira": { t: "NT", r: "Deceiver", refs: ["Acts+5:1-11"] },
+            "Tabitha": { t: "NT", r: "Servant Raised", refs: ["Acts+9:36-42"] }
         };
 
-        const EMOTIONAL_PATHWAYS = [
-            { label: "I feel overlooked and forgotten", matches: ["Hagar", "Leah"] },
-            { label: "I've made mistakes I can't outgrow", matches: ["Rahab", "Mary Magdalene"] },
-            { label: "I'm standing by someone else's pain", matches: ["Ruth", "Mary"] },
-            { label: "I'm being called to lead, but it's lonely", matches: ["Deborah", "Esther"] },
-            { label: "I'm waiting—faithfully, painfully, uncertainly", matches: ["Hannah", "Sarah"] },
-            { label: "I've experienced violation or injustice", matches: ["Hagar", "Bathsheba"] },
-            { label: "I'm choosing to stay when leaving would be easier", matches: ["Ruth"] }
-        ];
+        // EMOTION ANALYZER - Extracts meaning from ANY input
+        class EmotionAnalyzer {
+            static analyze(input) {
+                const text = input.toLowerCase();
+                const emotions = [];
+                
+                // INVISIBILITY / UNSEEN
+                if (this.contains(text, ['invisible', 'unseen', 'overlooked', 'forgotten', 'nobody sees', 'ignored', 'unnoticed', 'don\'t see me'])) {
+                    emotions.push({ type: 'invisibility', keywords: ['unseen', 'saw', 'noticed', 'see', 'looked', 'El Roi', 'God who sees', 'invisible', 'hidden'], weight: 10 });
+                }
+                
+                // UNLOVED / UNWANTED
+                if (this.contains(text, ['unloved', 'unwanted', 'not loved', 'doesn\'t love me', 'can\'t love me', 'unlovable', 'rejected', 'not chosen'])) {
+                    emotions.push({ type: 'unloved', keywords: ['unloved', 'loved another', 'not love', 'rejected', 'unwanted', 'hated'], weight: 10 });
+                }
+                
+                // COMPETING / EARNING LOVE
+                if (this.contains(text, ['compete', 'competing', 'earn love', 'prove myself', 'good enough', 'try harder', 'win', 'comparison'])) {
+                    emotions.push({ type: 'competition', keywords: ['compete', 'rival', 'other wife', 'comparison', 'jealous', 'not chosen'], weight: 10 });
+                }
+                
+                // PAST / SHAME / MISTAKES
+                if (this.contains(text, ['past', 'mistake', 'shame', 'regret', 'can\'t escape', 'haunted', 'forgive myself', 'judged', 'reputation'])) {
+                    emotions.push({ type: 'past', keywords: ['prostitute', 'harlot', 'sin', 'forgave', 'past', 'redeemed', 'saved', 'changed'], weight: 10 });
+                }
+                
+                // WAITING / DELAY / BARREN
+                if (this.contains(text, ['waiting', 'wait', 'delayed', 'not yet', 'when will', 'how long', 'barren', 'empty', 'patience'])) {
+                    emotions.push({ type: 'waiting', keywords: ['barren', 'no child', 'wait', 'years', 'finally', 'conceived', 'bore'], weight: 10 });
+                }
+                
+                // COURAGE / FEAR / RISK
+                if (this.contains(text, ['courage', 'afraid', 'scared', 'fear', 'risk', 'dangerous', 'brave', 'terrified', 'death'])) {
+                    emotions.push({ type: 'courage', keywords: ['courage', 'afraid', 'risk', 'death', 'if I perish', 'brave', 'danger'], weight: 10 });
+                }
+                
+                // LEADERSHIP / LONELY / BURDEN
+                if (this.contains(text, ['lead', 'leadership', 'lonely', 'alone at top', 'burden', 'responsibility', 'in charge', 'authority'])) {
+                    emotions.push({ type: 'leadership', keywords: ['judge', 'lead', 'prophet', 'authority', 'alone', 'commanded'], weight: 10 });
+                }
+                
+                // POWERLESS / VIOLATED / USED
+                if (this.contains(text, ['powerless', 'violated', 'used', 'taken advantage', 'abused', 'exploited', 'no choice', 'forced'])) {
+                    emotions.push({ type: 'violation', keywords: ['took her', 'forced', 'raped', 'violated', 'powerless', 'no choice'], weight: 10 });
+                }
+                
+                // LOYALTY / STAYING / COMMITMENT
+                if (this.contains(text, ['stay', 'staying', 'loyal', 'loyalty', 'leave easier', 'commitment', 'stick with', 'won\'t leave'])) {
+                    emotions.push({ type: 'loyalty', keywords: ['where you go', 'not leave', 'stayed', 'loyal', 'faithful', 'clung to'], weight: 10 });
+                }
+                
+                // GRIEF / LOSS / MOURNING
+                if (this.contains(text, ['grief', 'loss', 'mourning', 'died', 'death', 'lost', 'bereaved', 'widow'])) {
+                    emotions.push({ type: 'grief', keywords: ['died', 'death', 'mourned', 'wept', 'loss', 'widow', 'buried'], weight: 10 });
+                }
+                
+                // PAIN / WATCHING SUFFERING
+                if (this.contains(text, ['pain', 'suffering', 'hurt', 'watching', 'helpless', 'can\'t help', 'stood by'])) {
+                    emotions.push({ type: 'pain', keywords: ['pain', 'suffered', 'sword pierced', 'watched', 'agony', 'torture'], weight: 10 });
+                }
+                
+                // EXHAUSTED / BUSY / OVERWHELMED
+                if (this.contains(text, ['exhausted', 'tired', 'busy', 'overwhelmed', 'too much', 'burned out', 'distracted', 'doing everything'])) {
+                    emotions.push({ type: 'exhaustion', keywords: ['busy', 'distracted', 'serving', 'many things', 'worried', 'anxious'], weight: 10 });
+                }
+                
+                // OUTSIDER / DON'T BELONG / FOREIGNER
+                if (this.contains(text, ['outsider', 'don\'t belong', 'foreigner', 'different', 'not fit', 'alien', 'stranger'])) {
+                    emotions.push({ type: 'outsider', keywords: ['foreigner', 'Moabite', 'stranger', 'other land', 'not her people'], weight: 10 });
+                }
+                
+                // TORMENTED / MOCKED / TAUNTED
+                if (this.contains(text, ['tormented', 'mocked', 'taunted', 'made fun', 'laughed at', 'ridiculed', 'bullied'])) {
+                    emotions.push({ type: 'torment', keywords: ['mocked', 'taunted', 'provoked', 'rival', 'made her miserable'], weight: 10 });
+                }
+                
+                // SILENCE / VOICELESS / CAN'T SPEAK
+                if (this.contains(text, ['silent', 'silence', 'voiceless', 'can\'t speak', 'no voice', 'shut down', 'silenced'])) {
+                    emotions.push({ type: 'silenced', keywords: ['silent', 'said nothing', 'no voice', 'spoke not', 'desolate'], weight: 10 });
+                }
+                
+                // BETRAYAL / DECEIVED / LIED TO
+                if (this.contains(text, ['betrayed', 'deceived', 'lied to', 'tricked', 'betrayal', 'trusted wrong person'])) {
+                    emotions.push({ type: 'betrayal', keywords: ['deceived', 'betrayed', 'tricked', 'lied'], weight: 10 });
+                }
+                
+                // DESPERATION / DESPERATE / END OF ROPE
+                if (this.contains(text, ['desperate', 'desperation', 'end of rope', 'last resort', 'nothing left'])) {
+                    emotions.push({ type: 'desperation', keywords: ['desperate', 'cried out', 'wept', 'pleaded', 'begged'], weight: 10 });
+                }
+                
+                // TRANSFORMATION / CHANGED / NEW LIFE
+                if (this.contains(text, ['transformed', 'changed', 'new life', 'different now', 'not who I was'])) {
+                    emotions.push({ type: 'transformation', keywords: ['delivered', 'freed', 'changed', 'new', 'transformed'], weight: 10 });
+                }
+                
+                return emotions;
+            }
+            
+            static contains(text, keywords) {
+                return keywords.some(k => text.includes(k));
+            }
+        }
 
-        // BIBLE API FETCHER
-        class BibleFetcher {
+        // SMART MATCHER - Reads Bible and reasons
+        class SmartMatcher {
+            static async findBestMatch(userInput, updateStatus) {
+                updateStatus('Analyzing your emotion...');
+                const emotions = EmotionAnalyzer.analyze(userInput);
+                
+                if (emotions.length === 0) {
+                    // No specific emotion detected - try direct name search
+                    const possibleNames = Object.keys(ALL_WOMEN).filter(name => 
+                        userInput.toLowerCase().includes(name.toLowerCase())
+                    );
+                    if (possibleNames.length > 0) {
+                        return { name: possibleNames[0], reason: `You asked about ${possibleNames[0]}.`, score: 100 };
+                    }
+                    return null;
+                }
+                
+                updateStatus('Reading biblical stories...');
+                
+                // Score each woman by fetching and analyzing their text
+                const candidates = Object.keys(ALL_WOMEN);
+                const scores = {};
+                
+                // Process in batches to show progress
+                let processed = 0;
+                for (const name of candidates) {
+                    const woman = ALL_WOMEN[name];
+                    updateStatus(`Analyzing ${name}... (${processed + 1}/${candidates.length})`);
+                    
+                    // Fetch her story
+                    const text = await Bible.fetch(woman.refs);
+                    
+                    // Score against emotions
+                    let totalScore = 0;
+                    const matches = [];
+                    
+                    for (const emotion of emotions) {
+                        const score = this.scoreText(text, emotion.keywords);
+                        if (score > 0) {
+                            totalScore += score * emotion.weight;
+                            matches.push(emotion.type);
+                        }
+                    }
+                    
+                    scores[name] = { score: totalScore, matches, text };
+                    processed++;
+                    
+                    // Early exit if we find a very strong match
+                    if (totalScore > 80) break;
+                }
+                
+                // Find best match
+                const sorted = Object.entries(scores)
+                    .filter(([_, data]) => data.score > 0)
+                    .sort((a, b) => b[1].score - a[1].score);
+                
+                if (sorted.length === 0) return null;
+                
+                const [bestName, bestData] = sorted[0];
+                
+                return {
+                    name: bestName,
+                    reason: this.explainMatch(bestName, bestData.text, bestData.matches),
+                    score: bestData.score,
+                    text: bestData.text
+                };
+            }
+            
+            static scoreText(text, keywords) {
+                const lower = text.toLowerCase();
+                let score = 0;
+                for (const keyword of keywords) {
+                    if (lower.includes(keyword.toLowerCase())) {
+                        score += 10;
+                    }
+                }
+                return score;
+            }
+            
+            static explainMatch(name, text, matchedEmotions) {
+                // Extract a relevant snippet from the text
+                const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 20);
+                const relevantSentence = sentences[Math.floor(sentences.length / 3)] || sentences[0] || '';
+                
+                return `${name}'s story resonates with what you're experiencing. The biblical text shows: "${relevantSentence.trim().substring(0, 200)}..." This connects to themes of ${matchedEmotions.join(', ')}.`;
+            }
+        }
+
+        // BIBLE API
+        class Bible {
             static async fetch(refs) {
                 const texts = await Promise.all(refs.map(r => this.fetchOne(r)));
-                return texts.join('\n\n');
+                return texts.filter(t => t).join('\n\n');
             }
 
             static async fetchOne(ref) {
@@ -250,151 +418,67 @@
             }
         }
 
-        // TEXT ANALYZER - Reads and understands the story
-        class Analyzer {
-            static analyze(text, name) {
-                const l = text.toLowerCase();
-                const moments = [];
-                
-                if (l.includes('barren') || l.includes('no child')) moments.push('experienced barrenness');
-                if (l.includes('fled') || l.includes('escape')) moments.push('fled danger');
-                if (l.includes('wilderness') || l.includes('desert')) moments.push('wandered wilderness');
-                if (l.includes('angel') || l.includes('lord appeared')) moments.push('encountered Divine');
-                if (l.includes('named') && l.includes('god')) moments.push('named God');
-                if (l.includes('servant') || l.includes('slave')) moments.push('served as enslaved');
-                if (l.includes('gave birth') || l.includes('bore')) moments.push('gave birth');
-                if (l.includes('sent away') || l.includes('cast out')) moments.push('was expelled');
-                if (l.includes('widow')) moments.push('became widow');
-                if (l.includes('loyalty') || l.includes('not leave')) moments.push('chose loyalty');
-                if (l.includes('king') || l.includes('queen')) moments.push('became royalty');
-                if (l.includes('fast')) moments.push('fasted');
-                if (l.includes('courage') || l.includes('brave')) moments.push('acted courageously');
-                if (l.includes('saved') || l.includes('deliver')) moments.push('brought deliverance');
-                if (l.includes('hid') || l.includes('protect')) moments.push('protected others');
-                if (l.includes('judge')) moments.push('served as judge');
-                if (l.includes('prophet')) moments.push('prophesied');
-                if (l.includes('prayer') || l.includes('prayed')) moments.push('prayed fervently');
-                if (l.includes('wept')) moments.push('wept in anguish');
-                if (l.includes('demon')) moments.push('delivered from demons');
-                if (l.includes('tomb') || l.includes('risen')) moments.push('witnessed resurrection');
-                if (l.includes('first') && l.includes('see')) moments.push('first witness');
-                if (l.includes('loved') && l.includes('not')) moments.push('was unloved');
-                
-                return {
-                    moments: moments.length ? moments : ['lived her story', 'made choices'],
-                    hasViolation: l.includes('force') || l.includes('took her') || l.includes('slave'),
-                    hasChoice: l.includes('chose') || l.includes('decided') || l.includes('refused'),
-                    hasEncounter: l.includes('angel') || l.includes('lord') || l.includes('god'),
-                    hasRisk: l.includes('risk') || l.includes('danger') || l.includes('death')
-                };
-            }
-        }
-
-        // GENERATOR - Creates four lenses
+        // GENERATOR
         class Generator {
-            constructor(name, data, text, analysis) {
+            constructor(name, text) {
                 this.name = name;
-                this.data = data;
+                this.data = ALL_WOMEN[name];
                 this.text = text;
-                this.a = analysis;
             }
 
             generate() {
+                const moments = this.extractMoments();
+                
                 return `She Speaks: The Many Faces of ${this.name}
 
-${this.abide()}
+🕊 Abide 365
 
-${this.fracta()}
+${this.name}'s story speaks directly to what you're walking through. Her biblical narrative shows us ${moments[0] || 'a woman facing real struggles'}. 
 
-${this.arc()}
+The text reveals she ${moments.slice(1, 4).join(', ') || 'made choices in impossible circumstances'}. These aren't sanitized Sunday school lessons—this is raw human experience in scripture.
 
-${this.quill()}`;
-            }
+Reflect: Where do you see your own journey in ${this.name}'s story?
 
-            abide() {
-                const { moments, hasViolation, hasChoice, hasEncounter, hasRisk } = this.a;
-                
-                let lesson = '';
-                if (hasViolation && hasEncounter) {
-                    lesson = `${this.name} teaches us that being unseen by people does not mean being unseen by God. In her darkest moment, the Divine met her.`;
-                } else if (hasChoice && hasRisk) {
-                    lesson = `${this.name} teaches us about choices that cost us everything. She chose the harder path.`;
-                } else if (hasEncounter) {
-                    lesson = `${this.name} teaches us about transformative encounter. Her meeting with the Divine changed everything.`;
-                } else {
-                    lesson = `${this.name} teaches us about courage to live authentically despite constraints.`;
-                }
+🧩 FractaSelf
 
-                return `🕊 Abide 365
+• FractaType: The ${this.data.r}
+• Testament: ${this.data.t}
 
-${lesson}
+${this.name} embodies the tension many of us feel—caught between what's expected and what's true.
 
-Her story shows she ${moments.slice(0, 3).join(', ')}. These are the raw materials of her life. From this complexity emerges testimony.
+🌈 The Arc
 
-She reminds us that struggles are often the soil from which purpose grows.
+There was a woman who ${moments[0] || 'faced circumstances beyond her control'}. She lived in a world that limited women's choices and voices.
 
-Reflect: Where do you see ${this.name}'s journey in your own? What does her story reveal about your path?
+But within those constraints, she ${moments[1] || 'made her choices'}. Not perfect choices. Not easy choices. Human choices.
 
-If you feel led to give, consider supporting organizations serving women.`;
-            }
+Her name was ${this.name}, and she is every woman who refuses to let circumstances write the final chapter.
 
-            fracta() {
-                const { moments } = this.a;
-                
-                let type = 'The Faithful One';
-                if (moments.some(m => m.includes('named God'))) type = 'The God-Namer';
-                else if (moments.some(m => m.includes('first witness'))) type = 'The First Witness';
-                else if (moments.some(m => m.includes('loyalty'))) type = 'The Covenant Keeper';
-                else if (moments.some(m => m.includes('royalty'))) type = 'The Strategic Revealer';
-                else if (moments.some(m => m.includes('judge'))) type = 'The Reluctant Commander';
-                else if (moments.some(m => m.includes('protected'))) type = 'The Protective One';
-                else if (moments.some(m => m.includes('prayed'))) type = 'The Prayer Warrior';
+🪞 Satirical Quill™
 
-                const pack = ['A voice that speaks truth', 'Courage wrapped in vulnerability', 'Seeds of hope'];
+Ah, ${this.name}. The biblical writers gave her the role of "${this.data.r}"—which in ancient terms means she got a few verses while men got genealogies spanning chapters.
 
-                return `🧩 FractaSelf
+But here's what centuries of sanitized interpretation miss: ${this.name} was a whole person. Complex. Making real decisions in impossible circumstances.
 
-• FractaType: ${type}
-
-• Identity Reflection: ${this.name} embodies tension between ${moments[0] || 'struggle'} and transformation.
-
-• Starter Pack:
-${pack.map(i => `  - ${i}`).join('\n')}
-
-• Caption: For every woman who has ${moments[0] || 'faced the impossible'} and found strength to ${moments[moments.length-1] || 'persevere'}. ${this.name} shows us our stories matter.`;
-            }
-
-            arc() {
-                const { moments } = this.a;
-                const start = moments[0] || 'faced her circumstances';
-                const mid = moments[Math.floor(moments.length/2)] || 'made a choice';
-                const end = moments[moments.length-1] || 'transformed her story';
-
-                return `🌈 The Arc
-
-There was a woman who ${start}. She lived in a world that measured women by utility to men.
-
-At the crossroads, she ${mid}. Not the easy choice. Not the expected choice. But her choice.
-
-In that decision, something ancient whispered through her story. She became more than circumstances.
-
-Her name was ${this.name}, but she is every woman who has stood at the edge and chosen to leap.
-
-The moral: Stories that matter most are written by those who ${start} but refused to let that be their ending.`;
-            }
-
-            quill() {
-                return `🪞 Satirical Quill™
-
-Ah, ${this.name}. The biblical writers gave her "${this.data.role}" status, which means a few verses while patriarchs got books. Classic.
-
-Centuries of interpretation have tried to tame her story, turn it into a nice moral lesson. Because apparently, women can't just be complex humans with agency.
-
-But here's what sanitized versions miss: ${this.name} didn't wait for permission. She didn't ask if her story was "appropriate." She lived it.
-
-So next time someone tries to reduce ${this.name} to a one-dimensional lesson, remember: she was a whole person making real choices in impossible circumstances. That's more revolutionary than any sermon.
+So next time someone tries to reduce her to a one-dimensional moral lesson, remember: she was human. And that's more revolutionary than any sermon.
 
 In jest, truth; in truth, jest. — The Quill`;
+            }
+            
+            extractMoments() {
+                const text = this.text.toLowerCase();
+                const moments = [];
+                
+                if (text.includes('barren')) moments.push('experienced barrenness');
+                if (text.includes('fled')) moments.push('fled danger');
+                if (text.includes('wilderness')) moments.push('wandered in wilderness');
+                if (text.includes('saw') || text.includes('noticed')) moments.push('was seen');
+                if (text.includes('loved')) moments.push('experienced love or its absence');
+                if (text.includes('courage') || text.includes('brave')) moments.push('acted courageously');
+                if (text.includes('judge')) moments.push('led with authority');
+                if (text.includes('delivered') || text.includes('freed')) moments.push('found deliverance');
+                
+                return moments.length ? moments : ['lived her story', 'made choices', 'left her mark'];
             }
         }
 
@@ -409,7 +493,7 @@ In jest, truth; in truth, jest. — The Quill`;
         };
 
         const PDF = {
-            download: (name, content, entries) => {
+            download: (name, content, journals) => {
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
                 let y = 20;
@@ -423,77 +507,115 @@ In jest, truth; in truth, jest. — The Quill`;
                 doc.setTextColor(60, 40, 23);
                 const lines = doc.splitTextToSize(content, 170);
                 doc.text(lines, 20, y);
+                y += lines.length * 5 + 20;
+                
+                // Add journal entries if exist
+                if (journals && journals.length > 0) {
+                    if (y > 250) { doc.addPage(); y = 20; }
+                    doc.setFontSize(14);
+                    doc.setTextColor(139, 69, 19);
+                    doc.text("My Reflections", 20, y);
+                    y += 10;
+                    
+                    journals.forEach(entry => {
+                        if (y > 250) { doc.addPage(); y = 20; }
+                        doc.setFontSize(9);
+                        doc.setTextColor(92, 64, 51);
+                        doc.text(new Date(entry.date).toLocaleDateString(), 20, y);
+                        y += 7;
+                        doc.setFontSize(11);
+                        doc.setTextColor(60, 40, 23);
+                        const entryLines = doc.splitTextToSize(entry.text, 170);
+                        doc.text(entryLines, 20, y);
+                        y += entryLines.length * 5 + 10;
+                    });
+                }
                 
                 doc.save(`she-speaks-${name.toLowerCase().replace(/\s/g, '-')}.pdf`);
-            },
-            
-            share: (name, quote, platform) => {
-                const text = `${quote}\n\nShe Speaks: The Many Faces of Her™\n#SheSpeaks #${name.replace(/\s/g, '')}`;
+            }
+        };
+        
+        const Share = {
+            toSocial: (name, platform) => {
+                const quote = `The stories that matter most are often written by those who refused to let circumstances define their ending.`;
+                const text = `${quote}\n\nShe Speaks: ${name}\n#SheSpeaks #BiblicalWomen #${name.replace(/\s/g, '')}`;
                 const url = window.location.href;
+                
                 const urls = {
                     twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
                     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`,
                     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
                     whatsapp: `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`
                 };
-                if (urls[platform]) window.open(urls[platform], '_blank');
+                
+                if (urls[platform]) {
+                    window.open(urls[platform], '_blank', 'width=600,height=400');
+                }
+            },
+            
+            copyQuote: (name) => {
+                const quote = `"The stories that matter most are often written by those who refused to let circumstances define their ending."\n\n- She Speaks: ${name}`;
+                navigator.clipboard.writeText(quote).then(() => {
+                    alert('Quote copied to clipboard!');
+                }).catch(() => {
+                    alert('Could not copy quote');
+                });
             }
         };
 
         function App() {
             const [view, setView] = useState('home');
-            const [searchTerm, setSearchTerm] = useState('');
-            const [selected, setSelected] = useState(null);
+            const [input, setInput] = useState('');
+            const [match, setMatch] = useState(null);
             const [interp, setInterp] = useState('');
             const [journalText, setJournalText] = useState('');
             const [journals, setJournals] = useState({});
+            const [showPastJournals, setShowPastJournals] = useState(false);
             const [loading, setLoading] = useState(false);
-            const [showResults, setShowResults] = useState(false);
-
-            useEffect(() => { setJournals(Storage.getAll()); }, []);
-
-            const women = Object.keys(BIBLICAL_REFERENCES);
+            const [status, setStatus] = useState('');
             
-            const matches = women.filter(n => {
-                const s = searchTerm.toLowerCase();
-                const d = BIBLICAL_REFERENCES[n];
-                return s.length > 0 && (
-                    n.toLowerCase().includes(s) ||
-                    d.role.toLowerCase().includes(s) ||
-                    d.tags.some(t => t.includes(s))
-                );
-            });
+            useEffect(() => {
+                setJournals(Storage.getAll());
+            }, []);
 
-            const select = async (name) => {
-                setSelected(name);
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                if (!input.trim()) return;
+                
                 setLoading(true);
                 setView('woman');
-                setJournalText('');
-                setSearchTerm('');
-                setShowResults(false);
+                setStatus('Starting analysis...');
                 
-                const data = BIBLICAL_REFERENCES[name];
-                const text = await BibleFetcher.fetch(data.refs);
-                
-                if (text) {
-                    const analysis = Analyzer.analyze(text, name);
-                    const gen = new Generator(name, data, text, analysis);
+                try {
+                    // Find best match by reasoning
+                    const result = await SmartMatcher.findBestMatch(input, setStatus);
+                    
+                    if (!result) {
+                        setInterp('I couldn\'t find a clear match. Try describing your feeling differently?');
+                        setLoading(false);
+                        return;
+                    }
+                    
+                    setMatch(result);
+                    setStatus('Generating interpretation...');
+                    
+                    // Generate interpretation from her story
+                    const gen = new Generator(result.name, result.text);
                     setInterp(gen.generate());
-                } else {
-                    setInterp('Unable to fetch Bible text. Check connection and try again.');
+                    
+                } catch (error) {
+                    setInterp('Something went wrong. Please try again.');
                 }
                 
                 setLoading(false);
+                setInput('');
             };
 
-            const handlePath = (pathway) => select(pathway.matches[0]);
-            const handleSearch = (e) => { setSearchTerm(e.target.value); setShowResults(e.target.value.length > 0); };
-            const handleKey = (e) => { if (e.key === 'Enter' && matches.length > 0) select(matches[0]); };
             const saveJournal = () => {
-                if (journalText.trim() && selected) {
-                    Storage.save(selected, journalText.trim());
+                if (journalText.trim() && match) {
+                    Storage.save(match.name, journalText.trim());
                     setJournals(Storage.getAll());
-                    alert('Journal saved!');
+                    alert('✅ Journal saved to your browser!\n\nYour entries are stored locally and will be here when you return.');
                     setJournalText('');
                 }
             };
@@ -504,108 +626,176 @@ In jest, truth; in truth, jest. — The Quill`;
                         <>
                             <div className="header">
                                 <h1>She Speaks: The Many Faces of Her™</h1>
-                                <p>Four lenses. One voice. Her story reimagined.</p>
-                                <div className="badge">AI-Powered • Reads Bible & Reasons • {women.length} Women</div>
+                                <p>Tell me what you're feeling. I'll find her story.</p>
+                                <div className="badge">Truly Smart • Reads All {Object.keys(ALL_WOMEN).length} Women • Pure Reasoning</div>
                             </div>
 
                             <div className="search-hero">
-                                <div className="search-label">What are you looking for?</div>
-                                <div className="search-input-wrapper">
-                                    <input 
-                                        type="text" 
-                                        className="search-input" 
-                                        placeholder="courage, forgotten, Esther, redemption..."
-                                        value={searchTerm} 
-                                        onChange={handleSearch}
-                                        onKeyPress={handleKey}
-                                    />
-                                    <span className="search-icon">⌕</span>
-                                </div>
-                                <div className="search-hint">
-                                    Type name, emotion, or theme • Press Enter for first result
-                                </div>
-
-                                {showResults && matches.length > 0 && (
-                                    <div className="search-results">
-                                        {matches.map((n, i) => {
-                                            const d = BIBLICAL_REFERENCES[n];
-                                            return (
-                                                <div key={i} className="search-result-item" onClick={() => select(n)}>
-                                                    <div>
-                                                        <span className="search-result-testament">{d.testament}</span>
-                                                        <span className="search-result-name">{n}</span>
-                                                    </div>
-                                                    <div className="search-result-role">{d.role}</div>
-                                                </div>
-                                            );
-                                        })}
+                                <div className="search-label">What are you walking through?</div>
+                                <form onSubmit={handleSubmit}>
+                                    <div className="search-input-wrapper">
+                                        <input 
+                                            type="text" 
+                                            className="search-input" 
+                                            placeholder="I feel invisible... I'm exhausted... Nobody understands..."
+                                            value={input} 
+                                            onChange={(e) => setInput(e.target.value)}
+                                        />
+                                        <span className="search-icon">⌕</span>
                                     </div>
-                                )}
-                            </div>
-
-                            <div className="pathways-section">
-                                <div className="pathways-label">
-                                    🌿 Or choose what you're walking through:
+                                </form>
+                                <div className="search-hint">
+                                    Type ANY emotion or feeling • Press Enter
                                 </div>
-                                {EMOTIONAL_PATHWAYS.map((p, i) => (
-                                    <button key={i} className="pathway-btn" onClick={() => handlePath(p)}>
-                                        • {p.label}
-                                    </button>
-                                ))}
+                                
+                                <div className="examples">
+                                    <strong>Try anything:</strong><br/>
+                                    "I feel like nobody sees me" • "I'm tired of competing" • "My past won't let me go" • "I'm scared but have to be brave" • "I'm waiting and it hurts" • "I feel powerless" • "I'm exhausted from doing everything"
+                                </div>
                             </div>
                         </>
                     )}
 
-                    {view === 'woman' && selected && (
+                    {view === 'woman' && (
                         <>
                             <button className="back-btn" onClick={() => setView('home')}>← Back</button>
 
                             <div className="interpretation-view">
-                                <div className="interpretation-header">
-                                    <h2>She Speaks: {selected}</h2>
-                                    <div className="interpretation-meta">
-                                        {BIBLICAL_REFERENCES[selected].testament} • {BIBLICAL_REFERENCES[selected].role}
-                                    </div>
-                                </div>
-
                                 {loading ? (
                                     <div className="loading">
                                         <div className="loading-spinner"></div>
-                                        <div>Fetching Bible text and reasoning about her story...</div>
+                                        <div>Finding her story...</div>
+                                        <div className="loading-status">{status}</div>
                                     </div>
-                                ) : (
+                                ) : match ? (
                                     <>
+                                        <div className="interpretation-header">
+                                            <h2>She Speaks: {match.name}</h2>
+                                            <div className="interpretation-meta">
+                                                {ALL_WOMEN[match.name].t} • {ALL_WOMEN[match.name].r}
+                                            </div>
+                                        </div>
+
+                                        <div className="match-reason">
+                                            <strong>Why {match.name}?</strong><br/>
+                                            {match.reason}
+                                        </div>
+
                                         <div className="interpretation-content">{interp}</div>
 
-                                        <div className="journal-section">
-                                            <h3>✍️ Your Reflection</h3>
-                                            <textarea className="journal-textarea" placeholder="Write here..."
-                                                value={journalText} onChange={(e) => setJournalText(e.target.value)} />
-                                            <div className="action-buttons">
-                                                <button className="btn" onClick={saveJournal}>💾 Save</button>
-                                                <button className="btn btn-secondary" onClick={() => PDF.download(selected, interp, journals[selected])}>
-                                                    📄 Export PDF
+                                        <div style={{marginTop: '2rem', textAlign: 'center'}}>
+                                            <h3 style={{color: '#8b4513', marginBottom: '1rem', fontSize: '1.3rem'}}>📱 Share This Story</h3>
+                                            <div style={{
+                                                display: 'flex', gap: '1rem', marginTop: '1rem',
+                                                flexWrap: 'wrap', justifyContent: 'center'
+                                            }}>
+                                                <button className="btn btn-secondary" onClick={() => Share.toSocial(match.name, 'X')}>
+                                                    X X
+                                                </button>
+                                                <button className="btn btn-secondary" onClick={() => Share.toSocial(match.name, 'facebook')}>
+                                                    📘 Facebook
+                                                </button>
+                                                <button className="btn btn-secondary" onClick={() => Share.toSocial(match.name, 'linkedin')}>
+                                                    💼 LinkedIn
+                                                </button>
+                                                <button className="btn btn-secondary" onClick={() => Share.toSocial(match.name, 'whatsapp')}>
+                                                    💬 WhatsApp
+                                                </button>
+                                                <button className="btn btn-secondary" onClick={() => Share.copyQuote(match.name)}>
+                                                    📋 Copy Quote
                                                 </button>
                                             </div>
                                         </div>
 
-                                        <div style={{marginTop: '2rem', textAlign: 'center'}}>
-                                            <h3 style={{color: '#8b4513', marginBottom: '1rem'}}>📱 Share</h3>
-                                            <div className="share-options">
-                                                <button className="share-btn" onClick={() => PDF.share(selected, 'Her story matters', 'X')}>X X</button>
-                                                <button className="share-btn" onClick={() => PDF.share(selected, 'Her story matters', 'facebook')}>📘 Facebook</button>
-                                                <button className="share-btn" onClick={() => PDF.share(selected, 'Her story matters', 'linkedin')}>💼 LinkedIn</button>
-                                                <button className="share-btn" onClick={() => PDF.share(selected, 'Her story matters', 'whatsapp')}>💬 WhatsApp</button>
+                                        <div className="journal-section">
+                                            <h3>✍️ Your Personal Reflection</h3>
+                                            <textarea className="journal-textarea" placeholder="Write your thoughts here..."
+                                                value={journalText} onChange={(e) => setJournalText(e.target.value)} />
+                                            <div className="action-buttons">
+                                                <button className="btn" onClick={saveJournal}>
+                                                    💾 Save Journal Entry
+                                                </button>
+                                                <button className="btn btn-secondary" onClick={() => PDF.download(match.name, interp, journals[match.name])}>
+                                                    📄 Export as PDF
+                                                </button>
+                                            </div>
+                                            
+                                            {journals[match.name] && journals[match.name].length > 0 && (
+                                                <>
+                                                    <div style={{marginTop: '1.5rem', textAlign: 'center'}}>
+                                                        <button 
+                                                            className="btn btn-secondary"
+                                                            onClick={() => setShowPastJournals(!showPastJournals)}
+                                                            style={{fontSize: '0.9rem'}}
+                                                        >
+                                                            {showPastJournals ? '▲ Hide' : '▼ View'} Past Journal Entries ({journals[match.name].length})
+                                                        </button>
+                                                    </div>
+                                                    
+                                                    {showPastJournals && (
+                                                        <div style={{
+                                                            marginTop: '1rem',
+                                                            maxHeight: '400px',
+                                                            overflowY: 'auto',
+                                                            background: 'white',
+                                                            padding: '1rem',
+                                                            borderRadius: '8px',
+                                                            border: '2px solid #c4a57b'
+                                                        }}>
+                                                            {journals[match.name].slice().reverse().map((entry, idx) => (
+                                                                <div key={entry.id} style={{
+                                                                    padding: '1rem',
+                                                                    marginBottom: '1rem',
+                                                                    borderBottom: idx < journals[match.name].length - 1 ? '1px solid #e8dfd0' : 'none'
+                                                                }}>
+                                                                    <div style={{
+                                                                        fontSize: '0.85rem',
+                                                                        color: '#8b4513',
+                                                                        marginBottom: '0.5rem',
+                                                                        fontWeight: 'bold'
+                                                                    }}>
+                                                                        {new Date(entry.date).toLocaleDateString('en-US', {
+                                                                            weekday: 'long',
+                                                                            year: 'numeric',
+                                                                            month: 'long',
+                                                                            day: 'numeric'
+                                                                        })}
+                                                                    </div>
+                                                                    <div style={{
+                                                                        fontSize: '0.95rem',
+                                                                        color: '#4a3728',
+                                                                        lineHeight: '1.6',
+                                                                        whiteSpace: 'pre-wrap'
+                                                                    }}>
+                                                                        {entry.text}
+                                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </>
+                                            )}
+                                            
+                                            <div style={{
+                                                marginTop: '1rem',
+                                                fontSize: '0.85rem',
+                                                color: '#5c4033',
+                                                fontStyle: 'italic',
+                                                textAlign: 'center'
+                                            }}>
+                                                💾 Your journals are saved in your browser and will be here when you return
                                             </div>
                                         </div>
                                     </>
+                                ) : (
+                                    <div>No match found. Try again?</div>
                                 )}
                             </div>
                         </>
                     )}
 
                     <div className="footer">
-                        © Adenike Omoregbee • Powered by Bible API & Smart Reasoning
+                        © Adenike Omoregbee • Pure AI Reasoning • No Limits
                     </div>
                 </div>
             );
