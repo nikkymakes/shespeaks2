@@ -681,6 +681,43 @@ In jest, truth; in truth, jest. — The Quill`;
                                             {match.reason}
                                         </div>
 
+                                        {match.text && (
+                                            <div style={{
+                                                background: 'white',
+                                                padding: '2rem',
+                                                borderRadius: '12px',
+                                                marginBottom: '2rem',
+                                                border: '2px solid #c4a57b',
+                                                maxHeight: '400px',
+                                                overflowY: 'auto'
+                                            }}>
+                                                <h3 style={{
+                                                    color: '#8b4513',
+                                                    marginBottom: '1rem',
+                                                    fontSize: '1.3rem',
+                                                    textAlign: 'center'
+                                                }}>📖 Her Biblical Story</h3>
+                                                <div style={{
+                                                    fontSize: '0.9rem',
+                                                    color: '#5c4033',
+                                                    fontStyle: 'italic',
+                                                    marginBottom: '1rem',
+                                                    textAlign: 'center'
+                                                }}>
+                                                    {ALL_WOMEN[match.name].refs.map(ref => ref.replace(/\+/g, ' ')).join(' • ')}
+                                                </div>
+                                                <div style={{
+                                                    lineHeight: '1.8',
+                                                    fontSize: '1rem',
+                                                    color: '#4a3728',
+                                                    fontFamily: 'Georgia, serif',
+                                                    whiteSpace: 'pre-wrap'
+                                                }}>
+                                                    {match.text}
+                                                </div>
+                                            </div>
+                                        )}
+
                                         <div className="interpretation-content">{interp}</div>
 
                                         <div style={{marginTop: '2rem', textAlign: 'center'}}>
@@ -690,7 +727,7 @@ In jest, truth; in truth, jest. — The Quill`;
                                                 flexWrap: 'wrap', justifyContent: 'center'
                                             }}>
                                                 <button className="btn btn-secondary" onClick={() => Share.toSocial(match.name, 'X')}>
-                                                    X X
+                                                    X 
                                                 </button>
                                                 <button className="btn btn-secondary" onClick={() => Share.toSocial(match.name, 'facebook')}>
                                                     📘 Facebook
